@@ -1734,6 +1734,162 @@ pre {
   text-shadow: 0 0 12px rgba(87, 255, 130, 0.35);
 }
 
+.vasovagal-quote {
+  position: relative;
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  margin-top: 30px;
+  overflow: hidden;
+  border: 1px solid var(--line-hot);
+  background:
+    linear-gradient(rgba(28, 106, 47, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 106, 47, 0.07) 1px, transparent 1px),
+    radial-gradient(circle at 78% 48%, rgba(87, 255, 130, 0.1), transparent 25rem),
+    #020a05;
+  background-size: 24px 24px, 24px 24px, auto, auto;
+  box-shadow: 14px 14px 0 rgba(12, 72, 27, 0.12);
+}
+
+.vasovagal-quote::before {
+  content: "PACKET:0002 / AFFERENT";
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 2;
+  color: var(--green-dim);
+  font-size: 7px;
+  letter-spacing: 0.15em;
+}
+
+.vasovagal-quote > header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 370px;
+  padding: 34px;
+  align-content: space-between;
+  border-right: 1px solid var(--line);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 11px, rgba(87, 255, 130, 0.035) 11px 12px),
+    rgba(4, 18, 8, 0.9);
+}
+
+.vasovagal-quote > header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 16px 3px rgba(87, 255, 130, 0.55);
+}
+
+.vasovagal-quote > header p {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: var(--green);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.vasovagal-quote > header .status-dot {
+  flex: 0 0 auto;
+}
+
+.vasovagal-quote time {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.09em;
+}
+
+.vasovagal-quote blockquote {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-width: 0;
+  min-height: 370px;
+  margin: 0;
+  padding: clamp(45px, 7vw, 86px);
+  align-content: center;
+}
+
+.vasovagal-quote blockquote::before {
+  content: "“";
+  position: absolute;
+  top: 32px;
+  left: 42px;
+  color: var(--faint);
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.vasovagal-quote blockquote p {
+  position: relative;
+  margin: 0;
+  color: var(--phosphor);
+  font-size: clamp(54px, 7.8vw, 106px);
+  font-weight: 900;
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+  text-transform: uppercase;
+}
+
+.vasovagal-quote blockquote em {
+  display: block;
+  color: transparent;
+  font-style: normal;
+  -webkit-text-stroke: 1.5px var(--green);
+  text-shadow: 0 0 28px rgba(87, 255, 130, 0.22);
+}
+
+.vasovagal-quote > footer {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 26px;
+  min-height: 78px;
+  padding: 17px 24px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  background: rgba(3, 14, 6, 0.94);
+}
+
+.vasovagal-quote > footer div {
+  display: grid;
+}
+
+.vasovagal-quote > footer small {
+  color: var(--green-dim);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.vasovagal-quote > footer strong {
+  margin-top: 3px;
+  color: var(--phosphor);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.vasovagal-quote > footer > span {
+  color: var(--green);
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  text-shadow: 0 0 12px rgba(87, 255, 130, 0.45);
+}
+
+.vasovagal-quote > footer > small:last-child {
+  justify-self: end;
+  color: var(--green);
+}
+
 .home-routes {
   padding-block: clamp(90px, 11vw, 150px);
 }
@@ -3041,6 +3197,35 @@ pre {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .vasovagal-quote {
+    grid-template-columns: 1fr;
+  }
+
+  .vasovagal-quote::before {
+    display: none;
+  }
+
+  .vasovagal-quote > header {
+    display: flex;
+    min-height: auto;
+    padding: 24px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .vasovagal-quote > header::after {
+    top: auto;
+    right: 30px;
+    bottom: -5px;
+  }
+
+  .vasovagal-quote blockquote {
+    min-height: 320px;
+  }
+
   .settings-copy {
     position: static;
   }
@@ -3383,6 +3568,46 @@ pre {
 
   .social-telemetry {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vasovagal-quote {
+    margin-top: 20px;
+    box-shadow: 7px 7px 0 rgba(12, 72, 27, 0.12);
+  }
+
+  .vasovagal-quote > header {
+    display: grid;
+    gap: 14px;
+    padding: 22px 18px;
+  }
+
+  .vasovagal-quote blockquote {
+    min-height: 270px;
+    padding: 48px 20px 34px;
+  }
+
+  .vasovagal-quote blockquote::before {
+    top: 22px;
+    left: 18px;
+    font-size: 80px;
+  }
+
+  .vasovagal-quote blockquote p {
+    font-size: 49px;
+  }
+
+  .vasovagal-quote > footer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .vasovagal-quote > footer > span {
+    font-size: 14px;
+  }
+
+  .vasovagal-quote > footer > small:last-child {
+    justify-self: start;
   }
 
   .page-next {
