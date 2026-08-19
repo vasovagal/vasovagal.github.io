@@ -16,16 +16,16 @@
   <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
   <header class="site-header">
     <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
-    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a class="active" aria-current="page" href="/rag/">03.rag</a><a href="/install/">04.install</a></nav>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a href="/smart/">03.how so smart?</a><a class="active" aria-current="page" href="/rag/">04.rag</a><a href="/install/">05.install</a></nav>
     <a class="github-link" href="https://github.com/vasovagal/vagus">source↗</a>
   </header>
 
   <main id="main">
     <section class="page-hero section-shell rag-page-hero" aria-labelledby="page-title">
       <div class="page-hero-copy reveal">
-        <p class="section-index">03 // RETRIEVAL-AUGMENTED RECALL</p>
+        <p class="section-index">04 // RETRIEVAL FIELD DATA</p>
         <h1 id="page-title">RAG, WITH<br><span>THE NERVES EXPOSED.</span></h1>
-        <p>Vagus retrieves. Your agent reads and answers. Every stage is local, inspectable, and measured without relabeling a score as confidence.</p>
+        <p>Vagus retrieves. Your agent reads and answers. Every stage is local, inspectable, and measured without relabeling a score as confidence. <a href="/smart/">Start with the illustrated anatomy.</a></p>
       </div>
       <aside class="page-readout reveal delay-1"><span>CORPUS</span><b>566 NOTES</b><small>5,022 chunks</small><hr><span>RECALL@10</span><b>12 / 12</b><small>real known-note probe</small><hr><span>FUSION</span><b>RRF / 60</b><small>BM25 + 768d</small></aside>
     </section>
@@ -79,15 +79,15 @@
 
     <section class="skills-section" id="skills" aria-labelledby="skills-title">
       <div class="section-shell skills-layout">
-        <div class="skills-copy reveal"><p class="section-index">AGENT REFLEX ARC</p><h2 id="skills-title">GIVE YOUR AGENT<br>ACCESS TO MEMORY.</h2><p>Vagus carries three Agent Skills inside the binary: create a note, search with an explicit quality gate, and propose a PARA destination.</p><ul class="skill-files"><li><code>create-note/SKILL.md</code><span>capture → inbox → index</span></li><li><code>search/SKILL.md</code><span>retrieve → rerank → judge → cite</span></li><li><code>process-inbox/SKILL.md</code><span>propose → approve → file</span></li></ul></div>
+        <div class="skills-copy reveal"><p class="section-index">AGENT REFLEX ARC</p><h2 id="skills-title">GIVE YOUR HARNESS<br>ACCESS TO MEMORY.</h2><p>Vagus provides retrieval and filing primitives, not frontier reasoning. Claude Code and pi can install three bundled Agent Skills; Codex CLI or any shell-capable SOTA harness can drive the same JSON contract: create a note, search with an explicit quality gate, and propose a PARA destination.</p><ul class="skill-files"><li><code>create-note/SKILL.md</code><span>capture → inbox → index</span></li><li><code>search/SKILL.md</code><span>retrieve → rerank → judge → cite</span></li><li><code>process-inbox/SKILL.md</code><span>ticket context + recommendation → approve → file</span></li></ul><a class="text-route" href="/smart/#harness">see the harness contract →</a></div>
         <div class="agent-terminal reveal delay-1"><div class="terminal-bar"><span></span><span></span><span></span><b>install_reflexes.sh</b></div><div class="agent-command"><small># Claude Code</small><code><span>$</span> vagus skills install</code><b class="ok">✓ ~/.claude/skills</b></div><div class="agent-command"><small># pi coding agent</small><code><span>$</span> vagus skills install --agent pi</code><b class="ok">✓ ~/.pi/agent/skills</b></div><div class="agent-command last"><small># inspect</small><code><span>$</span> vagus skills list --agent pi</code><b class="dim">create-note [installed]<br>search [installed]<br>process-inbox [installed]</b></div><p>Idempotent. Re-run after upgrades. In a live pi session: <code>/reload</code>.</p></div>
       </div>
     </section>
 
-    <section class="page-next"><p>Ready to attach the reflex arc?</p><a href="/install/">04 // install from the tap →</a></section>
+    <section class="page-next"><p>Ready to attach the reflex arc?</p><a href="/install/">05 // install from the tap →</a></section>
   </main>
 
-  <footer class="site-footer"><p><strong>vasovagal</strong> // rag</p><div><a href="/">home</a><a href="/vagus/">vagus</a><a href="/install/">install</a></div><p>retrieve locally // judge honestly // <span id="year">2026</span></p></footer>
+  <footer class="site-footer"><p><strong>vasovagal</strong> // field data</p><div><a href="/">home</a><a href="/smart/">how so smart?</a><a href="/install/">install</a></div><p>retrieve locally // judge honestly // <span id="year">2026</span></p></footer>
   <script src="/script.js" defer></script>
 </body>
 </html>

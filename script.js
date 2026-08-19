@@ -6,6 +6,7 @@
   const legacyRoutes = {
     "#vagus": "/vagus/",
     "#corti": "/corti/",
+    "#smart": "/smart/",
     "#rag": "/rag/",
     "#benchmark": "/rag/#benchmark",
     "#skills": "/rag/#skills",

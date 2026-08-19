@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How so smart? // Vagus hybrid retrieval anatomy</title>
+  <meta name="description" content="See how Vagus combines BM25 and vector search, where local indexing and retrieval spend time, and why a SOTA agent harness completes the loop.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://vasovagal.github.io/smart/">
+  <meta property="og:title" content="How so smart? // two searches and a strong agent"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <link rel="canonical" href="https://vasovagal.github.io/smart/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage smart-page">
+  <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a class="active" aria-current="page" href="/smart/">03.how so smart?</a><a href="/rag/">04.rag</a><a href="/install/">05.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/vagus">source↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell smart-page-hero" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal">
+        <p class="section-index">03 // HOW SO SMART?</p>
+        <h1 id="page-title">NOT MAGIC.<br><span>TWO SEARCHES<br>+ A JUDGE.</span></h1>
+        <p>Vagus makes local evidence easy to retrieve. BM25 remembers the words, vectors remember the meaning, and a state-of-the-art agent harness reads the evidence and finishes the job.</p>
+      </div>
+      <aside class="page-readout reveal delay-1" aria-label="Hybrid retrieval summary"><span>LEXICAL</span><b>BM25</b><small>identifiers · names · exact phrases</small><hr><span>SEMANTIC</span><b>768D VECTOR</b><small>paraphrases · concepts · remembered gist</small><hr><span>REASONING</span><b>YOUR HARNESS</b><small>pi · Codex CLI · Claude Code</small></aside>
+    </section>
+
+    <section class="page-section section-shell" id="two-searches" aria-labelledby="two-searches-title">
+      <div class="section-heading-row reveal"><p class="section-index">ONE QUERY // TWO INSTINCTS</p><h2 id="two-searches-title">WORDS ON THE LEFT.<br>MEANING ON THE RIGHT.</h2></div>
+
+      <div class="query-packet reveal" aria-label="Example query sent to both retrievers">
+        <span>QUERY_PACKET</span><code>“why did Firefox stall on the first request?”</code><i>send down both channels ↓</i>
+      </div>
+
+      <div class="retriever-grid">
+        <article class="retriever-panel lexical-panel reveal">
+          <header><span>CHANNEL_A // LEXICAL</span><b>BM25</b><i>TANTIVY</i></header>
+          <p>Tokenize the query, reward rare matching terms, account for repetition and document length, then rank chunks containing the literal vocabulary.</p>
+          <ol class="retriever-steps"><li><b>01</b><span>split into terms</span><code>firefox · stall · first · request</code></li><li><b>02</b><span>weight rare terms</span><code>IDF(firefox) &gt; IDF(request)</code></li><li><b>03</b><span>rank exact evidence</span><code>error codes win here</code></li></ol>
+          <p class="retriever-best"><span>BEST AT</span> filenames, commands, ticket IDs, error strings, product names, and wording you can quote.</p>
+        </article>
+
+        <article class="retriever-panel semantic-panel reveal delay-1">
+          <header><span>CHANNEL_B // SEMANTIC</span><b>VECTOR</b><i>EMBEDDINGGEMMA</i></header>
+          <p>Turn the query into 768 local numbers, compare its direction with indexed chunk vectors, then rank passages whose meaning points the same way.</p>
+          <ol class="retriever-steps"><li><b>01</b><span>prompt as a search query</span><code>task: search result | query:</code></li><li><b>02</b><span>embed locally</span><code>text → [0.03, −0.11, …] × 768</code></li><li><b>03</b><span>rank by cosine</span><code>gist survives paraphrase</code></li></ol>
+          <p class="retriever-best"><span>BEST AT</span> concepts, paraphrases, descriptions, and the memory you can explain but cannot quote.</p>
+        </article>
+      </div>
+
+      <div class="fusion-board reveal" aria-labelledby="fusion-title">
+        <div class="fusion-copy">
+          <p class="section-index">RECIPROCAL RANK FUSION // k = 60</p>
+          <h3 id="fusion-title">DON'T MIX SCORES.<br>MIX RANKS.</h3>
+          <p>BM25 scores and cosine values live on unrelated scales. RRF ignores those raw magnitudes and adds rank evidence instead. A chunk can survive by dominating either channel; agreement lifts it higher.</p>
+          <code class="rrf-formula">RRF(d) = Σ 1 / (60 + rank<sub>channel</sub>(d))</code>
+        </div>
+        <div class="fusion-table-wrap">
+          <table class="fusion-table">
+            <caption>Illustrative candidate ranks</caption>
+            <thead><tr><th>candidate chunk</th><th>BM25</th><th>vector</th><th>fused signal</th></tr></thead>
+            <tbody><tr><th>cold-load diagnosis</th><td>#4</td><td>#1</td><td><b>both agree</b></td></tr><tr><th>literal Firefox error</th><td>#1</td><td>#12</td><td>exact survives</td></tr><tr><th>generic browser advice</th><td>#9</td><td>#5</td><td>falls behind</td></tr></tbody>
+          </table>
+          <p>Illustration only—the real lists are chunk IDs, deeper than these three rows, and deterministic ties use a stable ID.</p>
+        </div>
+      </div>
+
+      <div class="smart-flow reveal" aria-label="Retrieval handoff from two search channels to the agent">
+        <div><small>01</small><b>BM25 + VECTOR</b><span>independent ranked lists</span></div><i>→</i>
+        <div><small>02</small><b>RRF / 60</b><span>high-recall candidate pool</span></div><i>→</i>
+        <div><small>03</small><b>JINA?</b><span>optional cross-encoder</span></div><i>→</i>
+        <div><small>04</small><b>FULL BODIES</b><span>not snippet theater</span></div><i>→</i>
+        <div><small>05</small><b>AGENT JUDGE</b><span>useful · nonredundant · cited</span></div>
+      </div>
+      <p class="smart-caveat reveal">Below 10,000 embedded chunks, semantic search uses exact cosine automatically; larger vaults use the local usearch HNSW sidecar. <code>--exact</code> remains the ground-truth escape hatch. The optional reranker can improve precision, but it is measured rather than presumed better.</p>
+    </section>
+
+    <section class="page-section smart-time-section" id="indexing-time" aria-labelledby="indexing-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">INDEX TIME // PAY ON CHANGE</p><h2 id="indexing-title">UNCHANGED NOTES<br>COST NO EMBEDDINGS.</h2></div>
+
+        <div class="index-gate reveal">
+          <div class="index-scan"><small>EVERY RUN</small><b>WALK .MD → CHECK MTIME</b><span>complete snapshot catches new and deleted notes</span></div>
+          <div class="index-branches"><div class="index-branch skip"><small>UNCHANGED</small><b>SKIP</b><span>fast path // embedding model stays unloaded</span></div><div class="index-branch changed"><small>NEW / CHANGED / FORCED</small><b>READ + HASH</b><span>only this branch pays the model</span></div></div>
+        </div>
+
+        <div class="index-flow reveal" aria-label="Changed note indexing pipeline"><div><small>01</small><b>PARSE</b><span>frontmatter + Markdown</span></div><i>→</i><div><small>02</small><b>CHUNK</b><span>bounded sections</span></div><i>→</i><div class="hot"><small>03</small><b>EMBED</b><span>768d document vectors</span></div><i>→</i><div><small>04</small><b>WRITE ×3</b><span>SQLite · Tantivy · usearch</span></div><i>→</i><div><small>05</small><b>COMMIT</b><span>derived state durable</span></div></div>
+
+        <div class="time-lab">
+          <div class="time-lab-copy reveal"><p class="section-index">MEASURED CHANGED-NOTE PATH</p><h3>THE EMBEDDER<br>OWNS THE CLOCK.</h3><p>A synthetic five-section note was filed five times in an isolated vault on an M1 Pro with model files cached. The median instrumented run took <strong>1.878 s</strong>.</p><p>The exact shape depends on note length, model cache, hardware, and index size. These bars explain the work; they are not a universal speed promise.</p></div>
+          <div class="timing-card reveal delay-1" aria-label="Index timing breakdown">
+            <header><span>INDEX_PROFILE // MEDIAN OF 5</span><b>1,878 ms total</b></header>
+            <div class="timing-row"><div class="timing-label"><b>MODEL LOAD + ORCHESTRATION*</b><span>scan/open/vector persist residual</span></div><div class="timing-track"><i style="--share: 53%"></i></div><strong>~1,017 ms</strong></div>
+            <div class="timing-row"><div class="timing-label"><b>DOCUMENT EMBEDDING</b><span>EmbeddingGemma inference</span></div><div class="timing-track"><i style="--share: 42%"></i></div><strong>794 ms</strong></div>
+            <div class="timing-row"><div class="timing-label"><b>TANTIVY COMMIT</b><span>commit + merge wait</span></div><div class="timing-track"><i style="--share: 4.5%"></i></div><strong>84 ms</strong></div>
+            <div class="timing-row"><div class="timing-label"><b>CHUNK + ROW/VECTOR INSERT</b><span>all measured hot writes</span></div><div class="timing-track"><i style="--share: 0.3%"></i></div><strong>~2 ms</strong></div>
+            <p>*Residual is honest subtraction, not a separately instrumented phase. It includes embedder initialization and local-store orchestration. Phase medians need not sum exactly to the median total.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section section-shell" id="search-time" aria-labelledby="search-time-title">
+      <div class="section-heading-row reveal"><p class="section-index">SEARCH TIME // 5,022 CHUNKS</p><h2 id="search-time-title">FUSION IS CHEAP.<br>MODELS ARE NOT.</h2></div>
+
+      <div class="search-profiles">
+        <article class="search-profile reveal">
+          <header><span>PLAIN HYBRID</span><b>1,075.8 ms</b><small>median retrieval core</small></header>
+          <div class="segment-bar" aria-hidden="true"><i class="segment retrieve" style="--share: 99.8%"></i><i class="segment fuse" style="--share: 0.2%"></i></div>
+          <dl><div><dt>BM25 + query embedding + exact vector + RRF</dt><dd>1,074.0 ms</dd></div><div><dt>result hydration (“fuse” timer)</dt><dd>0.9 ms</dd></div><div class="fast"><dt>BM25-only warm total</dt><dd>4.1 ms</dd></div></dl>
+          <p>The query embedder dominates a one-shot CLI process. BM25 and rank fusion are tiny by comparison.</p>
+        </article>
+
+        <article class="search-profile rerank-profile reveal delay-1">
+          <header><span>HYBRID + RERANK</span><b>2,089.7 ms</b><small>context 0 · capped prefix</small></header>
+          <div class="segment-bar" aria-hidden="true"><i class="segment retrieve" style="--share: 48.3%"></i><i class="segment load" style="--share: 6.4%"></i><i class="segment rerank" style="--share: 45.3%"></i></div>
+          <dl><div><dt>hybrid retrieval</dt><dd>1,010.0 ms</dd></div><div><dt>Jina model load</dt><dd>132.6 ms</dd></div><div><dt>cross-encoder forward pass</dt><dd>953.9 ms</dd></div><div><dt>result hydration (“fuse” timer)</dt><dd>0.9 ms</dd></div></dl>
+          <p>Reranking roughly doubles this query. Wider adjacent context costs more, so it stays explicit.</p>
+        </article>
+      </div>
+
+      <div class="measurement-note reveal"><b>MEASUREMENT BOUNDARY</b><p>Vagus v0.13.0 · Apple M1 Pro · 566 notes / 5,022 chunks · median of five separate invocations · model files present locally; no network · fixed non-private query · <code>--no-index</code>. Exact cosine is automatic at this corpus size. The timer covers the retrieval core, not agent reasoning or shell startup.</p><p>Normal search first performs an incremental mtime refresh. When nothing changed, it does not load the document embedder. <a href="https://github.com/vasovagal/vasovagal.github.io/blob/main/benchmarks/2026-08-19-timings.md">open timing record ↗</a></p></div>
+    </section>
+
+    <section class="page-section harness-section" id="harness" aria-labelledby="harness-title">
+      <div class="section-shell">
+        <div class="harness-banner reveal"><p class="section-index">EXPECTED CONTROL PLANE // BRING A SOTA HARNESS</p><h2 id="harness-title">VAGUS RETRIEVES.<br>YOUR AGENT THINKS.</h2><p>Vagus deliberately stops short of pretending a rank is an answer. We expect a state-of-the-art, shell-capable harness—<strong>pi, Codex CLI, Claude Code, or equivalent</strong>—to read full candidates, apply current ticket and repository context, and decide what is actually useful.</p><div class="harness-names" aria-label="Example agent harnesses"><span>PI</span><span>CODEX CLI</span><span>CLAUDE CODE</span><span>YOUR NEXT ONE</span></div></div>
+
+        <div class="ticket-loop reveal" aria-label="Ticket-to-memory agent loop">
+          <article><small>01 // INTAKE</small><b>TICKET</b><p>Issue, task, meeting, or investigation enters the harness with live project context.</p></article>
+          <article><small>02 // RECALL</small><b>VAGUS SEARCH</b><p>Hybrid retrieval returns exact + semantic candidates and their full bodies.</p></article>
+          <article><small>03 // REASON</small><b>AGENT JUDGE</b><p>The harness rejects weak or redundant hits and cites the evidence it actually used.</p></article>
+          <article><small>04 // WORK</small><b>EXECUTE</b><p>The harness edits code, answers the ticket, and captures the durable outcome as Markdown.</p></article>
+          <article><small>05 // LOCATE</small><b>VAGUS SUGGESTS</b><p>Similar notes and existing PARA folders become candidate destinations—not commands.</p></article>
+          <article><small>06 // FILE</small><b>HARNESS + USER</b><p>Ticket context and Vagus recommendations meet; your approval policy controls the move.</p></article>
+        </div>
+
+        <div class="harness-contract">
+          <div class="contract-copy reveal"><p class="section-index">THE TANDEM</p><h3>ONE KNOWS THE TICKET.<br>ONE KNOWS THE VAULT.</h3><p>The harness knows what just happened in the repository. Vagus knows which local notes and PARA neighborhoods resemble the result. Let the harness file away completed ticket knowledge in tandem with Vagus location recommendations instead of asking either side to guess alone.</p><p class="approval-line">RECOMMENDATION ≠ AUTHORITY // KEEP HUMAN APPROVAL OR SET YOUR OWN EXPLICIT POLICY</p></div>
+          <div class="contract-terminal reveal delay-1">
+            <div class="terminal-bar"><span></span><span></span><span></span><b>ticket_memory_loop.sh</b><i>HARNESS</i></div>
+            <pre><code><span class="dim"># 1. retrieve evidence for the active ticket</span>
+<span class="prompt">$</span> vagus search "$ticket" \
+    --json --full --rerank --exact
+
+<span class="dim"># 2. create-note skill pipes the outcome to 00-Inbox</span>
+<span class="prompt">$</span> note=$(vagus add-note "$title" --source "$ticket" \
+    --print-path &lt;&lt;'NOTE'
+&lt;durable ticket outcome&gt;
+NOTE
+)
+
+<span class="dim"># 3. ask the vault topology; harness evaluates</span>
+<span class="prompt">$</span> vagus file "$note" --suggest --json
+<span class="ok">→ ["10-Projects/…", "30-Resources/…"]</span>
+
+<span class="dim"># 4. after the configured approval gate</span>
+<span class="prompt">$</span> vagus file "$note" --to "$destination"</code></pre>
+          </div>
+        </div>
+
+        <div class="harness-install-grid reveal">
+          <div><span>BUNDLED</span><b>CLAUDE CODE</b><code>vagus skills install</code></div><div><span>BUNDLED</span><b>PI</b><code>vagus skills install --agent pi</code></div><div><span>OPEN CONTRACT</span><b>CODEX / OTHERS</b><code>vagus … --json</code></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-next"><p>Want the corpus numbers behind the claims?</p><a href="/rag/">04 // inspect field data →</a></section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // how so smart?</p><div><a href="/">home</a><a href="/rag/">field data</a><a href="/install/">install</a></div><p>retrieve broadly // judge with context // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>

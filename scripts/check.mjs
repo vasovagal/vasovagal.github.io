@@ -7,6 +7,7 @@ const pages = [
   "index.html",
   "vagus/index.html",
   "corti/index.html",
+  "smart/index.html",
   "rag/index.html",
   "install/index.html",
   "404.html",
@@ -53,6 +54,12 @@ const requiredFacts = [
   "vagus <b>v0.13.0</b>",
   "corti <b>v0.13.0</b>",
   "NO RUNNING DAEMON",
+  "03.how so smart?",
+  "RRF(d) = Σ",
+  "1,075.8 ms",
+  "SOTA harness",
+  "Codex CLI",
+  "vagus file \"$note\" --suggest --json",
   "vagus reindex --since=7d",
   "vagus skills install --agent pi",
   "brew tap vasovagal/tap",
@@ -64,11 +71,19 @@ for (const fact of requiredFacts) {
   if (!combined.includes(fact)) throw new Error(`site is missing required fact: ${fact}`);
 }
 
-for (const route of ["/vagus/", "/corti/", "/rag/", "/install/"]) {
+const focusedRoutes = ["/vagus/", "/corti/", "/smart/", "/rag/", "/install/"];
+for (const route of focusedRoutes) {
   if (!documents.get("index.html").includes(`href="${route}"`)) {
     throw new Error(`home page does not route to ${route}`);
   }
+  for (const page of pages.filter((candidate) => candidate !== "404.html")) {
+    if (!documents.get(page).includes(`href="${route}"`)) {
+      throw new Error(`${page} navigation does not route to ${route}`);
+    }
+  }
 }
+
+await access(join(root, "benchmarks/2026-08-19-timings.md"));
 
 const css = await readFile(join(root, "styles.css"), "utf8");
 if (!css.includes("prefers-reduced-motion")) throw new Error("reduced-motion fallback is missing");

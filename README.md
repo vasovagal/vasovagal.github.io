@@ -1,8 +1,8 @@
 # vasovagal.github.io
 
-Static multi-page site for the [vasovagal](https://github.com/vasovagal) GitHub organization: [vagus](https://github.com/vasovagal/vagus), [corti](https://github.com/vasovagal/corti), the retrieval field report, and the shared [Homebrew tap](https://github.com/vasovagal/homebrew-tap).
+Static multi-page site for the [vasovagal](https://github.com/vasovagal) GitHub organization: [vagus](https://github.com/vasovagal/vagus), [corti](https://github.com/vasovagal/corti), the hybrid-retrieval anatomy, measured field data, and the shared [Homebrew tap](https://github.com/vasovagal/homebrew-tap).
 
-No generator is required. GitHub Pages serves the checked-in HTML, CSS, JavaScript, and images from `main`. The focused routes are `/vagus/`, `/corti/`, `/rag/`, and `/install/`; the home page stays a short router rather than one large brochure scroller.
+No generator is required. GitHub Pages serves the checked-in HTML, CSS, JavaScript, and images from `main`. The focused routes are `/vagus/`, `/corti/`, `/smart/`, `/rag/`, and `/install/`; the home page stays a short router rather than one large brochure scroller.
 
 ## Preview and check
 
@@ -32,4 +32,4 @@ For now, update this site manually after releases:
 4. Re-run the corpus measurements if publishing new benchmark numbers; keep private labels and reports out of this public repository.
 5. Run `npm test`, preview desktop/mobile, then commit and push `main`.
 
-The aggregate corpus measurement behind the first version is documented in [`benchmarks/2026-08-18.md`](benchmarks/2026-08-18.md).
+The aggregate corpus measurement behind the first version is documented in [`benchmarks/2026-08-18.md`](benchmarks/2026-08-18.md). The indexing and search profiles on “How so smart?” are documented separately in [`benchmarks/2026-08-19-timings.md`](benchmarks/2026-08-19-timings.md).
