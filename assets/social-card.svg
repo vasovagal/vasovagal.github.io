@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#12351d" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="80%" cy="35%" r="50%">
+      <stop offset="0" stop-color="#57ff82" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#010503" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="#010503"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <path d="M0 44h1200M0 586h1200" stroke="#1d6a35"/>
+  <g font-family="SFMono-Regular,Menlo,Consolas,monospace">
+    <text x="58" y="84" fill="#57ff82" font-size="18" letter-spacing="4">[VASOVAGAL_] // LOCAL NERVOUS SYSTEM</text>
+    <text x="58" y="232" fill="#d9f8df" font-size="72" font-weight="800" letter-spacing="-5">YOUR SECOND BRAIN</text>
+    <text x="58" y="316" fill="none" stroke="#57ff82" stroke-width="1.5" font-size="72" font-weight="800" letter-spacing="-5">HAS A SPINAL CORD.</text>
+    <text x="62" y="384" fill="#7da388" font-size="22">plain Markdown · local RAG · automatic meeting memory</text>
+    <text x="62" y="526" fill="#57ff82" font-size="17" letter-spacing="3">VAGUS v0.13.0  //  CORTI v0.13.0</text>
+  </g>
+  <g transform="translate(991 106)" fill="none" stroke="#57ff82">
+    <path d="M0 0v410" stroke-width="3" opacity=".7"/>
+    <path d="M-84 39H84M-62 39L0 91 62 39M-70 174H70M-52 174L0 226 52 174M-82 316H82M-60 316L0 368 60 316" stroke-width="3"/>
+    <g fill="#b5ff55" stroke="none">
+      <circle cx="0" cy="39" r="10"/><circle cx="0" cy="174" r="10"/><circle cx="0" cy="316" r="10"/>
+    </g>
+    <g fill="#57ff82" opacity=".25" filter="url(#soft)">
+      <circle cx="0" cy="39" r="28"/><circle cx="0" cy="174" r="28"/><circle cx="0" cy="316" r="28"/>
+    </g>
+  </g>
+</svg>

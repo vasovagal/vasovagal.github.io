@@ -1,0 +1,15 @@
+{
+  "name": "vasovagal.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static landing page for the vasovagal GitHub organization",
+  "scripts": {
+    "check": "node --check script.js && node scripts/check.mjs",
+    "test": "npm run check",
+    "serve": "python3 -m http.server 8080"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
