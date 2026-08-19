@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corti // automatic meeting memory</title>
+  <meta name="description" content="Corti identifies the macOS app using your microphone, captures both sides, shows a live transcript, and streams durable notes into Vagus.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://vasovagal.github.io/corti/">
+  <meta property="og:title" content="Corti // install it, join a call, remember"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <link rel="canonical" href="https://vasovagal.github.io/corti/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage corti-page">
+  <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a class="active" aria-current="page" href="/corti/">02.corti</a><a href="/rag/">03.rag</a><a href="/install/">04.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/corti">source↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal">
+        <p class="section-index">02 // AUDITORY TRANSDUCER</p>
+        <h1 id="page-title">CORTI<span class="cursor">_</span></h1>
+        <p>It notices the microphone. It identifies the app. It remembers the meeting while the meeting is still happening.</p>
+        <div class="page-actions"><a class="button primary" href="/install/">install v0.13.0 →</a><a class="button ghost" href="https://github.com/vasovagal/corti">github ↗</a></div>
+      </div>
+      <aside class="page-readout reveal delay-1" aria-label="Corti release and platform summary">
+        <span>RELEASE</span><b>0.13.0</b><small>2026-08-07</small>
+        <hr><span>PLATFORM</span><b>APPLE SILICON</b><small>macOS 15+</small>
+        <hr><span>STARTUP</span><b>JOIN A CALL</b><small>no bot · no calendar hook</small>
+      </aside>
+    </section>
+
+    <section class="page-section section-shell corti-lead" aria-labelledby="corti-start-title">
+      <div class="corti-copy reveal">
+        <p class="section-index">ZERO-TOUCH CAPTURE</p>
+        <h2 id="corti-start-title">INSTALL IT.<br>JOIN A CALL.<br>THAT'S THE SETUP.</h2>
+        <p>Corti watches macOS's microphone-in-use signal. When Zoom, Slack, Google Meet, Discord, or another app grabs the mic, capture begins automatically. The owning process becomes the source tag on the note.</p>
+        <ul class="system-list">
+          <li><span>[AUTO]</span> identifies whichever app owns the microphone</li>
+          <li><span>[DUAL]</span> captures your mic and far-end audio separately</li>
+          <li><span>[LOCAL]</span> runs Parakeet on CPU or Metal</li>
+          <li><span>[LIVE]</span> shows timestamped Me / Them transcript rows</li>
+          <li><span>[DURABLE]</span> streams bounded writes into the Vagus inbox</li>
+        </ul>
+        <p class="callout-line">NO CALENDAR HOOK. NO “JOIN MEETING” BOT. NO ACCOUNT.</p>
+      </div>
+
+      <figure class="screen-frame product-screen reveal delay-1">
+        <div class="screen-chrome"><span></span><span></span><span></span><b>CORTI // LIVE</b><i>● REC</i></div>
+        <img src="/assets/screenshots/live-transcript.png" width="2400" height="1600" alt="Corti live transcript showing timestamped Me and Them rows while a Zoom call streams durable windows to the Vagus inbox">
+        <figcaption>REAL REACT FRONTEND // DETERMINISTIC TAURI FIXTURE // RETINA CAPTURE</figcaption>
+      </figure>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="write-path-title">
+      <p class="section-index reveal">LIVE WRITE PATH</p>
+      <h2 class="sr-only" id="write-path-title">Corti live transcript write path</h2>
+      <div class="write-path reveal" aria-label="Corti live write path">
+        <div><small>01</small><b>MIC OWNER</b><span>Zoom</span></div><i>→</i>
+        <div><small>02</small><b>COREAUDIO</b><span>Me + Them</span></div><i>→</i>
+        <div><small>03</small><b>PARAKEET</b><span>live ASR</span></div><i>→</i>
+        <div><small>04</small><b>SYNC_ALL</b><span>bounded chunk</span></div><i>→</i>
+        <div><small>05</small><b>00-INBOX</b><span>plain Markdown</span></div>
+      </div>
+      <div class="corti-details">
+        <article class="detail-block reveal"><p class="section-index">LIVE WRITE AUTHORITY</p><h3>THE NOTE EXISTS<br>BEFORE THE CALL ENDS.</h3><p>With the local backend, Corti appends a bounded window every 1–10 minutes. Each complete chunk is OS-synced before memory is reused. A crash can lose the active interval—not the whole conversation.</p><code>State: transcribing → State: transcribed&nbsp;</code></article>
+        <article class="detail-block reveal delay-1"><p class="section-index">VISIBLE REFLEX</p><h3>READ THE ROOM.<br>WHILE YOU'RE IN IT.</h3><p>The menu-bar reader displays call-relative timestamps and Me / Them labels as speech regions close. Its idle microphone test uses the same local ASR without saving audio or creating a note.</p><a href="https://github.com/vasovagal/corti/blob/main/docs/streaming.md">inspect streaming contract →</a></article>
+      </div>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="surfaces-title">
+      <div class="section-heading-row reveal"><p class="section-index">REAL APP SURFACES</p><h2 id="surfaces-title">THE NERVE<br>HAS A UI.</h2></div>
+      <div class="product-gallery">
+        <figure class="product-shot reveal"><div class="screen-chrome"><span></span><span></span><span></span><b>RECORDING QUEUE</b></div><img loading="lazy" src="/assets/screenshots/recording-queue.png" width="2400" height="1600" alt="Corti recording queue with Zoom, Slack, and browser captures"><figcaption>Audio expires on schedule. Notes live on in the brain.</figcaption></figure>
+        <figure class="product-shot reveal delay-1"><div class="screen-chrome"><span></span><span></span><span></span><b>PIPELINE</b></div><img loading="lazy" src="/assets/screenshots/pipeline.png" width="2400" height="1600" alt="Corti pipeline showing detection, capture, echo cancellation, transcription, and filing to Vagus"><figcaption>The lit stages are active right now.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="page-section section-shell settings-showcase" aria-labelledby="settings-title">
+      <div class="settings-copy reveal"><p class="section-index">LOCAL MODE</p><h2 id="settings-title">YOUR AUDIO.<br>YOUR MODELS.</h2><p>Select private local Parakeet transcription, Metal acceleration, far-end diarization, echo cancellation, and one-minute durable inbox windows from the app.</p><p>Every quality-relevant choice stays visible and local: backend, runtime, models, diarization, echo cancellation, retention, and live filing cadence.</p></div>
+      <figure class="product-shot settings-shot reveal delay-1"><div class="screen-chrome"><span></span><span></span><span></span><b>SETTINGS // LOCAL</b></div><img loading="lazy" src="/assets/screenshots/settings-local.png" width="2400" height="2400" alt="Corti settings configured for private local Parakeet transcription, Metal, diarization, echo cancellation, and live inbox filing"><figcaption>Private local inference remains one runtime choice; AWS Transcribe is also available.</figcaption></figure>
+    </section>
+
+    <section class="page-next"><p>The ear writes Markdown. The memory makes it retrievable.</p><a href="/rag/">03 // inspect retrieval →</a></section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // corti</p><div><a href="/">home</a><a href="/vagus/">vagus</a><a href="/install/">install</a></div><p>hear locally // write durably // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>vasovagal // local nervous system for your second brain</title>
-  <meta name="description" content="Vagus and Corti: a local-first PARA second brain with hybrid RAG search, agent skills, automatic meeting capture, and live transcript filing.">
+  <meta name="description" content="Vagus and Corti: local-first PARA recall and automatic meeting memory, built from plain Markdown.">
   <meta name="theme-color" content="#020805">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vasovagal.github.io/">
@@ -17,41 +17,34 @@
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main">skip_to_signal</a>
   <div class="scanlines" aria-hidden="true"></div>
   <div class="page-noise" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="vasovagal home">
-      <span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span>
-    </a>
+    <a class="wordmark" href="/" aria-current="page" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
     <nav aria-label="Primary navigation">
-      <a href="#vagus">01.vagus</a>
-      <a href="#corti">02.corti</a>
-      <a href="#rag">03.rag</a>
-      <a href="#install">04.install</a>
+      <a href="/vagus/">01.vagus</a>
+      <a href="/corti/">02.corti</a>
+      <a href="/rag/">03.rag</a>
+      <a href="/install/">04.install</a>
     </nav>
     <a class="github-link" href="https://github.com/vasovagal">github↗</a>
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero home-hero" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> LOCAL NERVOUS SYSTEM // LINK ESTABLISHED</p>
         <h1 id="hero-title">YOUR SECOND BRAIN<br>HAS A <em>SPINAL CORD.</em></h1>
-        <p class="hero-lede">
-          <strong>vagus</strong> remembers. <strong>corti</strong> listens. Together they turn plain Markdown,
-          iCloud, and your Mac into a private memory system that can hear a meeting and retrieve the decision later.
-        </p>
+        <p class="hero-lede"><strong>vagus</strong> remembers. <strong>corti</strong> listens. Plain Markdown becomes a private memory system that can hear a meeting and retrieve the decision later.</p>
         <div class="release-line" aria-label="Current releases">
-          <a href="https://github.com/vasovagal/vagus/releases/tag/v0.13.0">vagus <b>v0.13.0</b></a>
-          <span>//</span>
-          <a href="https://github.com/vasovagal/corti/releases/tag/v0.13.0">corti <b>v0.13.0</b></a>
-          <span>// current</span>
+          <a href="https://github.com/vasovagal/vagus/releases/tag/v0.13.0">vagus <b>v0.13.0</b></a><span>//</span>
+          <a href="https://github.com/vasovagal/corti/releases/tag/v0.13.0">corti <b>v0.13.0</b></a><span>// current</span>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="#install">tap the nerve ↓</a>
+          <a class="button primary" href="/install/">tap the nerve →</a>
           <a class="button ghost" href="https://github.com/vasovagal">read source ↗</a>
         </div>
         <div class="process-check terminal-mini" aria-label="No daemon demonstration">
@@ -64,7 +57,7 @@
       </div>
 
       <div class="hero-spine reveal delay-1" aria-label="Cybernetic spinal cord connecting Corti, Vagus, and a Markdown cortex">
-        <div class="spine-label top-label">CORTEX // PLAIN MARKDOWN</div>
+        <div class="spine-label">CORTEX // PLAIN MARKDOWN</div>
         <pre class="ascii-spine" aria-hidden="true">
              ╔═══════════════════════╗
              ║  566 MEMORY NODES     ║
@@ -87,289 +80,45 @@
                       (( ◉ ))
                     APP / AUDIO
         </pre>
-        <span class="pulse-node node-a" aria-hidden="true"></span>
-        <span class="pulse-node node-b" aria-hidden="true"></span>
-        <span class="pulse-node node-c" aria-hidden="true"></span>
-        <div class="spine-readout">
-          <span>source: local</span><span>cloud: none*</span><span>pulse: 0 daemon</span>
-        </div>
-        <p class="asterisk">*Apple may sync the Markdown through your iCloud account. Vasovagal runs no service.</p>
+        <span class="pulse-node node-a" aria-hidden="true"></span><span class="pulse-node node-b" aria-hidden="true"></span><span class="pulse-node node-c" aria-hidden="true"></span>
+        <div class="spine-readout"><span>source: local</span><span>cloud: none*</span><span>pulse: 0 daemon</span></div>
+        <p class="asterisk">*Apple may sync Markdown through your iCloud account. Vasovagal runs no service.</p>
       </div>
     </section>
 
-    <div class="signal-rail" aria-hidden="true">
-      <span>NO_DAEMON</span><i>◆</i><span>NO_ACCOUNT</span><i>◆</i><span>NO_MEETING_BOT</span><i>◆</i><span>PLAIN_MARKDOWN</span><i>◆</i><span>LOCAL_MODELS</span><i>◆</i><span>REBUILDABLE_INDEX</span>
-    </div>
+    <div class="signal-rail" aria-hidden="true"><span>NO_DAEMON</span><i>◆</i><span>NO_ACCOUNT</span><i>◆</i><span>NO_MEETING_BOT</span><i>◆</i><span>PLAIN_MARKDOWN</span><i>◆</i><span>LOCAL_MODELS</span></div>
 
-    <section class="manifesto section-shell" aria-labelledby="manifesto-title">
-      <div class="section-index">00 // MANIFESTO</div>
-      <h2 id="manifesto-title">THE FILES ARE THE BRAIN.<br><span>EVERYTHING ELSE IS NERVOUS TISSUE.</span></h2>
-      <div class="manifesto-grid">
-        <p>There is no database holding your thoughts hostage. The source of truth is a folder of Markdown you can open with Vim, Obsidian, Finder, or anything that reads text.</p>
-        <p>Indexes are local, derived, and disposable. Audio capture is automatic, not extractive. Retrieval is measured, not described with hand-wavy “AI confidence.”</p>
-        <p class="manifesto-command"><code>rm -rf vendor_lock_in/</code><br><span>keep the memories.</span></p>
+    <section class="home-routes section-shell" aria-labelledby="routes-title">
+      <div class="home-routes-heading reveal">
+        <p class="section-index">SELECT A NERVE PATH</p>
+        <h2 id="routes-title">FOUR FOCUSED CIRCUITS.<br><span>CHOOSE A PATH.</span></h2>
       </div>
-    </section>
-
-    <section class="project-section section-shell" id="vagus" aria-labelledby="vagus-title">
-      <div class="project-heading reveal">
-        <div>
-          <p class="section-index">01 // AFFERENT NERVE</p>
-          <h2 id="vagus-title">VAGUS<span class="cursor">_</span></h2>
-          <p class="project-tagline">One fast binary for capture, PARA, and hybrid recall.</p>
-        </div>
-        <a class="version-stamp" href="https://github.com/vasovagal/vagus/releases/tag/v0.13.0">LATEST<br><b>0.13.0</b><br>2026-08-12</a>
+      <div class="route-grid">
+        <a class="route-card reveal" href="/vagus/">
+          <span>01 // MEMORY</span><b>VAGUS</b>
+          <p>PARA, iCloud handoff, hybrid recall, and absolutely no running daemon.</p><i>enter afferent nerve →</i>
+        </a>
+        <a class="route-card reveal delay-1" href="/corti/">
+          <span>02 // HEARING</span><b>CORTI</b>
+          <p>Automatic app attribution, live transcripts, and durable writes into the inbox.</p><i>enter auditory path →</i>
+        </a>
+        <a class="route-card reveal" href="/rag/">
+          <span>03 // RETRIEVAL</span><b>RAG / FIELD DATA</b>
+          <p>The exposed search pipeline, real-corpus measurements, and agent skills.</p><i>inspect the synapse →</i>
+        </a>
+        <a class="route-card reveal delay-1" href="/install/">
+          <span>04 // GRAFT</span><b>HOMEBREW TAP</b>
+          <p>Install the memory and the ear from one shared tap.</p><i>begin procedure →</i>
+        </a>
       </div>
-
-      <div class="feature-grid vagus-grid">
-        <article class="wire-panel reveal">
-          <span class="panel-number">0x01</span>
-          <h3>NO RUNNING DAEMON.</h3>
-          <p>Search is a command, not a lifestyle. Vagus starts, loads local indexes and models, returns evidence, and exits. No background watcher. No hosted account. No cloud round trip.</p>
-          <div class="panel-signal"><span></span>resident services: <b>0</b></div>
-        </article>
-        <article class="wire-panel reveal delay-1">
-          <span class="panel-number">0x02</span>
-          <h3>APPLE MOVES TEXT.</h3>
-          <p><code>vagus init --icloud</code> places the PARA vault in iCloud Drive and keeps a friendly <code>~/brain</code> symlink. Only Markdown syncs; every Mac owns its rebuildable index and model cache.</p>
-          <div class="panel-signal"><span></span>source format: <b>.md</b></div>
-        </article>
-        <article class="wire-panel reveal delay-2">
-          <span class="panel-number">0x03</span>
-          <h3>EXACT WORDS + MEANING.</h3>
-          <p>Tantivy BM25 catches identifiers. EmbeddingGemma-300M catches paraphrases. Reciprocal Rank Fusion keeps either path from becoming a single point of semantic failure.</p>
-          <div class="panel-signal"><span></span>fusion: <b>RRF k=60</b></div>
-        </article>
-      </div>
-
-      <div class="sync-rig reveal" aria-labelledby="sync-title">
-        <div class="rig-copy">
-          <p class="section-index">MULTI-MAC // iCLOUD HANDOFF</p>
-          <h3 id="sync-title">SYNC THE AXONS.<br>REBUILD THE REFLEX.</h3>
-          <p>Apple's iCloud auto-sync carries the Markdown between computers. After a week away, force-refresh only the filesystem window that could have changed while still reconciling new and deleted notes globally.</p>
-          <div class="command-block" data-copy-group>
-            <code><span>$</span> vagus reindex --since=7d</code>
-            <button type="button" data-copy="vagus reindex --since=7d" aria-label="Copy vagus reindex command">copy</button>
-          </div>
-          <p class="microcopy">Older embeddings survive. Recent mtimes are re-read. Local usage counters remain.</p>
-        </div>
-        <div class="sync-diagram" role="img" aria-label="Two Macs syncing Markdown through iCloud while keeping separate local indexes">
-          <div class="machine"><span>MAC_A</span><b>~/brain</b><small>local index<br>50.5 MiB</small></div>
-          <div class="sync-wire"><span>Markdown</span><i>← iCLOUD →</i><small>Apple auto-sync</small></div>
-          <div class="machine"><span>MAC_B</span><b>~/brain</b><small>local index<br>rebuild here</small></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="project-section corti-section" id="corti" aria-labelledby="corti-title">
-      <div class="section-shell">
-        <div class="project-heading reveal">
-          <div>
-            <p class="section-index">02 // AUDITORY TRANSDUCER</p>
-            <h2 id="corti-title">CORTI<span class="cursor">_</span></h2>
-            <p class="project-tagline">It notices the microphone. It remembers the meeting.</p>
-          </div>
-          <a class="version-stamp" href="https://github.com/vasovagal/corti/releases/tag/v0.13.0">LATEST<br><b>0.13.0</b><br>2026-08-07</a>
-        </div>
-
-        <div class="corti-intro">
-          <div class="corti-copy reveal">
-            <h3>INSTALL IT.<br>JOIN A CALL.<br>THAT'S THE SETUP.</h3>
-            <p>Corti watches macOS's microphone-in-use signal. When Zoom, Slack, Google Meet, Discord, or another app grabs the mic, capture begins automatically—and the owning app becomes the source tag.</p>
-            <ul class="system-list">
-              <li><span>[AUTO]</span> identifies the process using the microphone</li>
-              <li><span>[DUAL]</span> records your mic and far-end audio separately</li>
-              <li><span>[LOCAL]</span> Parakeet transcription on CPU or Metal</li>
-              <li><span>[LIVE]</span> timestamped Me / Them transcript window</li>
-              <li><span>[DURABLE]</span> streams bounded writes into the vagus inbox</li>
-            </ul>
-            <p class="callout-line">NO CALENDAR HOOK. NO “JOIN MEETING” BOT. NO ACCOUNT.</p>
-          </div>
-
-          <figure class="screen-frame reveal delay-1">
-            <div class="screen-chrome"><span></span><span></span><span></span><b>CORTI // LIVE</b><i>● REC</i></div>
-            <img src="/assets/screenshots/live-transcript.png" width="2400" height="1600" alt="Corti's dark live transcript window showing timestamped Me and Them rows while a Zoom call streams durable windows to the vagus inbox">
-            <figcaption>REAL REACT FRONTEND // DETERMINISTIC TAURI FIXTURE // RETINA CAPTURE</figcaption>
-          </figure>
-        </div>
-
-        <div class="write-path reveal" aria-label="Corti live write path">
-          <div><small>01</small><b>MIC OWNER</b><span>Zoom</span></div>
-          <i>→</i>
-          <div><small>02</small><b>COREAUDIO</b><span>Me + Them</span></div>
-          <i>→</i>
-          <div><small>03</small><b>PARAKEET</b><span>live ASR</span></div>
-          <i>→</i>
-          <div><small>04</small><b>SYNC_ALL</b><span>bounded chunk</span></div>
-          <i>→</i>
-          <div><small>05</small><b>00-INBOX</b><span>plain Markdown</span></div>
-        </div>
-
-        <div class="corti-details">
-          <article class="detail-block reveal">
-            <p class="section-index">LIVE WRITE AUTHORITY</p>
-            <h3>THE NOTE EXISTS<br>BEFORE THE CALL ENDS.</h3>
-            <p>With the local backend, Corti transcribes continuously and appends a bounded window every 1–10 minutes. Each complete chunk is OS-synced before its memory is reused. A crash can lose the active interval—not the whole conversation.</p>
-            <code>State: transcribing → State: transcribed&nbsp;</code>
-          </article>
-          <article class="detail-block reveal delay-1">
-            <p class="section-index">VISIBLE REFLEX</p>
-            <h3>READ THE ROOM.<br>WHILE YOU'RE IN IT.</h3>
-            <p>The live reader opens from the menu bar and displays call-relative timestamps with Me / Them labels as speech regions close. An idle microphone test uses the same local ASR without saving audio or creating a note.</p>
-            <a href="https://github.com/vasovagal/corti/blob/main/docs/streaming.md">inspect streaming contract →</a>
-          </article>
-        </div>
-
-        <div class="screenshot-strip reveal">
-          <figure>
-            <img loading="lazy" src="/assets/screenshots/recording-queue.png" width="2400" height="1600" alt="Corti recording queue with Zoom, Slack, and browser captures">
-            <figcaption>queue // audio expires; notes persist</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" src="/assets/screenshots/settings-local.png" width="2400" height="2400" alt="Corti settings configured for private local Parakeet transcription, Metal, diarization, echo cancellation, and live inbox filing">
-            <figcaption>local mode // Metal + live filing</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="rag-section section-shell" id="rag" aria-labelledby="rag-title">
-      <div class="rag-heading reveal">
-        <p class="section-index">03 // RETRIEVAL-AUGMENTED RECALL</p>
-        <h2 id="rag-title">RAG, WITH<br><span>THE NERVES EXPOSED.</span></h2>
-        <p>Vagus retrieves; your agent reads and answers. Every stage is local and inspectable. There is no mystery “knowledge base,” and a score is never mislabeled as confidence.</p>
-      </div>
-
-      <div class="pipeline-terminal reveal" role="img" aria-label="Vagus hybrid retrieval and agent judgment pipeline">
-        <div class="terminal-bar"><span></span><span></span><span></span><b>vagus::search_pipeline</b><i>OFFLINE</i></div>
-        <div class="pipeline-row">
-          <div class="pipe-node source"><small>INPUT</small><b>.md</b><span>~900-token chunks</span></div>
-          <i>→</i>
-          <div class="pipe-fork">
-            <div class="pipe-node"><small>LEXICAL</small><b>BM25</b><span>Tantivy</span></div>
-            <div class="pipe-node"><small>SEMANTIC</small><b>768d</b><span>EmbeddingGemma</span></div>
-          </div>
-          <i>→</i>
-          <div class="pipe-node hot"><small>FUSION</small><b>RRF</b><span>k = 60</span></div>
-          <i>→</i>
-          <div class="pipe-node"><small>OPTIONAL</small><b>JINA</b><span>cross-encoder</span></div>
-          <i>→</i>
-          <div class="pipe-node judge"><small>SKILL</small><b>JUDGE</b><span>full body · grade 0–3</span></div>
-          <i>→</i>
-          <div class="pipe-node output"><small>OUTPUT</small><b>≤6</b><span>useful notes</span></div>
-        </div>
-        <p><span class="prompt">$</span> vagus search "the decision I can describe but cannot quote" <span class="dim">--exact --rerank --full</span></p>
-      </div>
-
-      <div class="benchmark" id="benchmark">
-        <div class="benchmark-copy reveal">
-          <p class="section-index">FIELD REPORT // REAL CORPUS // 2026-08-18</p>
-          <h3>NOT A TOY VAULT.</h3>
-          <p>This page was checked against one real, iCloud-synced personal corpus on an M1 Pro. Only aggregate measurements are published; note titles, queries, and contents stay private.</p>
-          <p class="assessment"><strong>Assessment:</strong> recall is excellent at this scale; ordering is good, not oracle-perfect. Every gold note entered the 10-item judgment window, while three missed rank one. That is exactly why the skill reads full bodies and makes a final relevance judgment.</p>
-          <p class="benchmark-caveat">Small 12-query, author-designed known-note probe; not a universal benchmark. Exact hybrid RRF, note-level, k=10. The optional reranker also reached 100% recall but lower MRR (0.788), so it remains optional rather than dogma.</p>
-        </div>
-
-        <div class="metrics reveal delay-1" aria-label="Corpus and retrieval benchmark metrics">
-          <div class="metric hero-metric"><span>RECALL@10</span><b>12/12</b><small>100% gold-note recall</small></div>
-          <div class="metric"><span>TOP-1</span><b>9/12</b><small>75% first result</small></div>
-          <div class="metric"><span>MRR@10</span><b>0.854</b><small>mean reciprocal rank</small></div>
-          <div class="metric"><span>nDCG@10</span><b>0.891</b><small>graded ranking quality</small></div>
-          <div class="metric"><span>BATCH</span><b>15.9s</b><small>12 exact queries</small></div>
-        </div>
-      </div>
-
-      <div class="corpus-rack reveal" aria-label="Raw corpus and derived index sizes">
-        <div class="rack-title"><span>~/brain</span><b>RAW CORTEX</b><i>source of truth</i></div>
-        <div class="rack-item"><span>MARKDOWN</span><b>7.13 MiB</b><small>566 files</small></div>
-        <div class="rack-item"><span>CHUNKS</span><b>5,022</b><small>all embedded</small></div>
-        <div class="rack-item"><span>SQLITE</span><b>30.8 MiB</b><small>text + vectors + metadata</small></div>
-        <div class="rack-item"><span>TANTIVY</span><b>4.25 MiB</b><small>BM25 index</small></div>
-        <div class="rack-item"><span>USEARCH</span><b>15.5 MiB</b><small>HNSW vector index</small></div>
-        <div class="rack-total"><span>DERIVED TOTAL</span><b>50.5 MiB</b><small>rebuildable locally</small></div>
-      </div>
-    </section>
-
-    <section class="skills-section" id="skills" aria-labelledby="skills-title">
-      <div class="section-shell skills-layout">
-        <div class="skills-copy reveal">
-          <p class="section-index">04 // AGENT REFLEX ARC</p>
-          <h2 id="skills-title">GIVE YOUR AGENT<br>ACCESS TO MEMORY.</h2>
-          <p>Vagus carries three Agent Skills inside the binary: create a note, search with an explicit quality gate, and propose a PARA destination for the inbox. Install them globally for Claude Code or pi.</p>
-          <ul class="skill-files">
-            <li><code>create-note/SKILL.md</code><span>capture → inbox → index</span></li>
-            <li><code>search/SKILL.md</code><span>retrieve → rerank → judge → cite</span></li>
-            <li><code>process-inbox/SKILL.md</code><span>propose → approve → file</span></li>
-          </ul>
-        </div>
-        <div class="agent-terminal reveal delay-1">
-          <div class="terminal-bar"><span></span><span></span><span></span><b>install_reflexes.sh</b></div>
-          <div class="agent-command">
-            <small># Claude Code</small>
-            <code><span>$</span> vagus skills install</code>
-            <b class="ok">✓ ~/.claude/skills</b>
-          </div>
-          <div class="agent-command">
-            <small># pi coding agent</small>
-            <code><span>$</span> vagus skills install --agent pi</code>
-            <b class="ok">✓ ~/.pi/agent/skills</b>
-          </div>
-          <div class="agent-command last">
-            <small># inspect installation</small>
-            <code><span>$</span> vagus skills list --agent pi</code>
-            <b class="dim">create-note [installed]<br>search [installed]<br>process-inbox [installed]</b>
-          </div>
-          <p>Idempotent. Re-run after upgrades. In a live pi session: <code>/reload</code>.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="install-section section-shell" id="install" aria-labelledby="install-title">
-      <div class="install-heading reveal">
-        <p class="section-index">05 // GRAFT PROCEDURE</p>
-        <h2 id="install-title">TAP IN.<br>KEEP YOUR BRAIN.</h2>
-        <p>Both projects ship through the shared <a href="https://github.com/vasovagal/homebrew-tap">vasovagal/tap</a>. One tap, one CLI, one menu-bar app.</p>
-      </div>
-      <div class="install-terminal reveal delay-1" data-copy-group>
-        <div class="terminal-bar"><span></span><span></span><span></span><b>bootstrap.sh</b><i>arm64 macOS</i></div>
-        <pre><code><span class="dim"># connect the tap</span>
-<span class="prompt">$</span> brew tap vasovagal/tap
-<span class="prompt">$</span> brew trust --tap vasovagal/tap  <span class="dim"># Homebrew 6+</span>
-
-<span class="dim"># install the memory + the ear</span>
-<span class="prompt">$</span> brew install vagus
-<span class="prompt">$</span> brew install --cask corti
-
-<span class="dim"># wire Markdown to iCloud</span>
-<span class="prompt">$</span> vagus init --icloud
-<span class="ok">✓ nervous system online</span></code></pre>
-        <button type="button" class="copy-all" data-copy="brew tap vasovagal/tap&#10;brew trust --tap vasovagal/tap&#10;brew install vagus&#10;brew install --cask corti&#10;vagus init --icloud">copy bootstrap</button>
-      </div>
-      <div class="requirements reveal">
-        <span>VAGUS</span><p>macOS arm64 · Linux arm64 / x86_64</p>
-        <span>CORTI</span><p>Apple Silicon · macOS 15+ · Microphone + System Audio permissions</p>
-        <span>STATUS</span><p>pre-1.0 · Corti is ad-hoc signed / not notarized · inspect the source</p>
-      </div>
-    </section>
-
-    <section class="closing" aria-label="Closing statement">
-      <pre aria-hidden="true">
-       signal ───▶ memory ───▶ retrieval ───▶ agency
-          ╲________________________________╱
-                    your machine
-      </pre>
-      <h2>NO PULSE REQUIRED.</h2>
-      <p>Just text, local models, and a machine that remembers what you meant.</p>
-      <a class="button primary" href="https://github.com/vasovagal">github.com/vasovagal ↗</a>
     </section>
   </main>
 
   <footer class="site-footer">
     <p><strong>vasovagal</strong> // open source local memory systems</p>
-    <div><a href="https://github.com/vasovagal/vagus">vagus</a><a href="https://github.com/vasovagal/corti">corti</a><a href="https://github.com/vasovagal/homebrew-tap">tap</a></div>
-    <p>built manually // measured honestly // <span id="year">2026</span></p>
+    <div><a href="/vagus/">vagus</a><a href="/corti/">corti</a><a href="https://github.com/vasovagal/homebrew-tap">tap</a></div>
+    <p>pure prompt // second hand thoughts // <span id="year">2026</span></p>
   </footer>
-
   <script src="/script.js" defer></script>
 </body>
 </html>

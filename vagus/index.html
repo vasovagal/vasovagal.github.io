@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vagus // local-first PARA memory</title>
+  <meta name="description" content="Vagus is a no-daemon Rust CLI for PARA notes, iCloud-synced Markdown, and local hybrid search.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://vasovagal.github.io/vagus/">
+  <meta property="og:title" content="Vagus // one binary, zero resident processes"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <link rel="canonical" href="https://vasovagal.github.io/vagus/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage vagus-page">
+  <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a class="active" aria-current="page" href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a href="/rag/">03.rag</a><a href="/install/">04.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/vagus">source↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal">
+        <p class="section-index">01 // AFFERENT NERVE</p>
+        <h1 id="page-title">VAGUS<span class="cursor">_</span></h1>
+        <p>One fast binary for capture, PARA, and hybrid recall over a folder you already own.</p>
+        <div class="page-actions"><a class="button primary" href="/install/">install v0.13.0 →</a><a class="button ghost" href="https://github.com/vasovagal/vagus">github ↗</a></div>
+      </div>
+      <aside class="page-readout reveal delay-1" aria-label="Vagus release and architecture summary">
+        <span>RELEASE</span><b>0.13.0</b><small>2026-08-12</small>
+        <hr><span>RUNTIME</span><b>ON DEMAND</b><small>no background process</small>
+        <hr><span>SOURCE</span><b>MARKDOWN</b><small>Obsidian-compatible PARA</small>
+      </aside>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="vagus-core-title">
+      <div class="section-heading-row reveal"><p class="section-index">CORE REFLEXES</p><h2 id="vagus-core-title">FILES FIRST.<br>INDEX SECOND.</h2></div>
+      <div class="feature-grid vagus-grid">
+        <article class="wire-panel reveal"><span class="panel-number">0x01</span><h3>NO RUNNING DAEMON.</h3><p>Vagus starts, loads local indexes and models, returns evidence, and exits. No background watcher, hosted account, or cloud round trip.</p><div class="panel-signal"><span></span>resident services: <b>0</b></div></article>
+        <article class="wire-panel reveal delay-1"><span class="panel-number">0x02</span><h3>PLAIN PARA.</h3><p><code>00-Inbox / 10-Projects / 20-Areas / 30-Resources / 40-Archive</code>. Edit with Vim, Obsidian, Finder, or anything that reads text.</p><div class="panel-signal"><span></span>source format: <b>.md</b></div></article>
+        <article class="wire-panel reveal delay-2"><span class="panel-number">0x03</span><h3>WORDS + MEANING.</h3><p>Tantivy BM25 catches identifiers. EmbeddingGemma catches paraphrases. Reciprocal Rank Fusion preserves both retrieval paths.</p><div class="panel-signal"><span></span>fusion: <b>RRF k=60</b></div></article>
+      </div>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="sync-title">
+      <div class="sync-rig reveal">
+        <div class="rig-copy">
+          <p class="section-index">MULTI-MAC // iCLOUD HANDOFF</p>
+          <h3 id="sync-title">SYNC THE AXONS.<br>REBUILD THE REFLEX.</h3>
+          <p><code>vagus init --icloud</code> places the vault in Apple's iCloud Drive and keeps a friendly <code>~/brain</code> symlink. Apple carries only Markdown; each Mac owns a local, rebuildable index and model cache.</p>
+          <p>After a week away, force-refresh the filesystem window that may have changed while still reconciling new and deleted notes globally.</p>
+          <div class="command-block" data-copy-group><code><span>$</span> vagus reindex --since=7d</code><button type="button" data-copy="vagus reindex --since=7d">copy</button></div>
+          <p class="microcopy">Older embeddings survive. Recent mtimes are re-read. Local usage counters remain.</p>
+        </div>
+        <div class="sync-diagram" role="img" aria-label="Two Macs syncing Markdown through iCloud while keeping separate local indexes">
+          <div class="machine"><span>MAC_A</span><b>~/brain</b><small>local index<br>50.5 MiB</small></div>
+          <div class="sync-wire"><span>Markdown</span><i>← iCLOUD →</i><small>Apple auto-sync</small></div>
+          <div class="machine"><span>MAC_B</span><b>~/brain</b><small>local index<br>rebuild here</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section section-shell compact-section" aria-labelledby="filing-title">
+      <div class="split-copy reveal">
+        <div><p class="section-index">ASSISTED PARA</p><h2 id="filing-title">THE AGENT PROPOSES.<br>YOU APPROVE.</h2></div>
+        <div><p>The create-note skill captures into <code>00-Inbox</code>. The process-inbox skill reads each note, suggests a PARA home, and waits for approval before moving anything.</p><a class="text-route" href="/rag/#skills">inspect agent skills →</a></div>
+      </div>
+    </section>
+
+    <section class="page-next"><p>Want the retrieval internals and real-corpus numbers?</p><a href="/rag/">03 // expose the RAG pipeline →</a></section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // vagus</p><div><a href="/">home</a><a href="/corti/">corti</a><a href="/install/">install</a></div><p>one binary // zero daemon // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>

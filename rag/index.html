@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vagus RAG // retrieval with the nerves exposed</title>
+  <meta name="description" content="The Vagus hybrid retrieval pipeline, honest real-corpus measurements, and bundled Claude Code and pi Agent Skills.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://vasovagal.github.io/rag/">
+  <meta property="og:title" content="Vagus RAG // retrieval with the nerves exposed"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <link rel="canonical" href="https://vasovagal.github.io/rag/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage rag-page">
+  <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a class="active" aria-current="page" href="/rag/">03.rag</a><a href="/install/">04.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/vagus">source↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell rag-page-hero" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal">
+        <p class="section-index">03 // RETRIEVAL-AUGMENTED RECALL</p>
+        <h1 id="page-title">RAG, WITH<br><span>THE NERVES EXPOSED.</span></h1>
+        <p>Vagus retrieves. Your agent reads and answers. Every stage is local, inspectable, and measured without relabeling a score as confidence.</p>
+      </div>
+      <aside class="page-readout reveal delay-1"><span>CORPUS</span><b>566 NOTES</b><small>5,022 chunks</small><hr><span>RECALL@10</span><b>12 / 12</b><small>real known-note probe</small><hr><span>FUSION</span><b>RRF / 60</b><small>BM25 + 768d</small></aside>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="pipeline-title">
+      <div class="section-heading-row reveal"><p class="section-index">SEARCH PIPELINE</p><h2 id="pipeline-title">LOCAL FROM<br>QUERY TO EVIDENCE.</h2></div>
+      <div class="pipeline-terminal reveal" role="img" aria-label="Vagus hybrid retrieval and agent judgment pipeline">
+        <div class="terminal-bar"><span></span><span></span><span></span><b>vagus::search_pipeline</b><i>OFFLINE</i></div>
+        <div class="pipeline-row">
+          <div class="pipe-node source"><small>INPUT</small><b>.md</b><span>~900-token chunks</span></div><i>→</i>
+          <div class="pipe-fork"><div class="pipe-node"><small>LEXICAL</small><b>BM25</b><span>Tantivy</span></div><div class="pipe-node"><small>SEMANTIC</small><b>768d</b><span>EmbeddingGemma</span></div></div><i>→</i>
+          <div class="pipe-node hot"><small>FUSION</small><b>RRF</b><span>k = 60</span></div><i>→</i>
+          <div class="pipe-node"><small>OPTIONAL</small><b>JINA</b><span>cross-encoder</span></div><i>→</i>
+          <div class="pipe-node judge"><small>SKILL</small><b>JUDGE</b><span>full body · grade 0–3</span></div><i>→</i>
+          <div class="pipe-node output"><small>OUTPUT</small><b>≤6</b><span>useful notes</span></div>
+        </div>
+        <p><span class="prompt">$</span> vagus search "the decision I can describe but cannot quote" <span class="dim">--exact --rerank --full</span></p>
+      </div>
+    </section>
+
+    <section class="page-section section-shell benchmark" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="benchmark-copy reveal">
+        <p class="section-index">FIELD REPORT // REAL CORPUS // 2026-08-18</p>
+        <h3 id="benchmark-title">NOT A TOY VAULT.</h3>
+        <p>This page was measured against one real, iCloud-synced personal corpus on an M1 Pro. Only aggregates are public; titles, queries, and contents stay private.</p>
+        <p class="assessment"><strong>Assessment:</strong> recall is excellent at this scale; ordering is good, not oracle-perfect. Every gold note entered the 10-item judgment window, while three missed rank one. That is why the skill reads full bodies before presenting evidence.</p>
+        <p class="benchmark-caveat">Small 12-query, author-designed known-note probe; not a universal benchmark. Exact hybrid RRF, note-level, k=10. The optional reranker also reached 100% recall but lower MRR (0.788), so it remains optional.</p>
+        <a class="text-route" href="https://github.com/vasovagal/vasovagal.github.io/blob/main/benchmarks/2026-08-18.md">measurement record ↗</a>
+      </div>
+      <div class="metrics reveal delay-1" aria-label="Corpus and retrieval benchmark metrics">
+        <div class="metric hero-metric"><span>RECALL@10</span><b>12/12</b><small>100% gold-note recall</small></div>
+        <div class="metric"><span>TOP-1</span><b>9/12</b><small>75% first result</small></div>
+        <div class="metric"><span>MRR@10</span><b>0.854</b><small>mean reciprocal rank</small></div>
+        <div class="metric"><span>nDCG@10</span><b>0.891</b><small>graded ranking quality</small></div>
+        <div class="metric"><span>BATCH</span><b>15.9s</b><small>12 exact queries</small></div>
+      </div>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="corpus-title">
+      <div class="section-heading-row reveal"><p class="section-index">STORAGE ANATOMY</p><h2 id="corpus-title">RAW BRAIN.<br>DERIVED TISSUE.</h2></div>
+      <div class="corpus-rack reveal" aria-label="Raw corpus and derived index sizes">
+        <div class="rack-title"><span>~/brain</span><b>RAW CORTEX</b><i>source of truth</i></div>
+        <div class="rack-item"><span>MARKDOWN</span><b>7.13 MiB</b><small>566 files</small></div>
+        <div class="rack-item"><span>CHUNKS</span><b>5,022</b><small>all embedded</small></div>
+        <div class="rack-item"><span>SQLITE</span><b>30.8 MiB</b><small>text + vectors</small></div>
+        <div class="rack-item"><span>TANTIVY</span><b>4.25 MiB</b><small>BM25 index</small></div>
+        <div class="rack-item"><span>USEARCH</span><b>15.5 MiB</b><small>HNSW index</small></div>
+        <div class="rack-total"><span>DERIVED TOTAL</span><b>50.5 MiB</b><small>rebuildable locally</small></div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills" aria-labelledby="skills-title">
+      <div class="section-shell skills-layout">
+        <div class="skills-copy reveal"><p class="section-index">AGENT REFLEX ARC</p><h2 id="skills-title">GIVE YOUR AGENT<br>ACCESS TO MEMORY.</h2><p>Vagus carries three Agent Skills inside the binary: create a note, search with an explicit quality gate, and propose a PARA destination.</p><ul class="skill-files"><li><code>create-note/SKILL.md</code><span>capture → inbox → index</span></li><li><code>search/SKILL.md</code><span>retrieve → rerank → judge → cite</span></li><li><code>process-inbox/SKILL.md</code><span>propose → approve → file</span></li></ul></div>
+        <div class="agent-terminal reveal delay-1"><div class="terminal-bar"><span></span><span></span><span></span><b>install_reflexes.sh</b></div><div class="agent-command"><small># Claude Code</small><code><span>$</span> vagus skills install</code><b class="ok">✓ ~/.claude/skills</b></div><div class="agent-command"><small># pi coding agent</small><code><span>$</span> vagus skills install --agent pi</code><b class="ok">✓ ~/.pi/agent/skills</b></div><div class="agent-command last"><small># inspect</small><code><span>$</span> vagus skills list --agent pi</code><b class="dim">create-note [installed]<br>search [installed]<br>process-inbox [installed]</b></div><p>Idempotent. Re-run after upgrades. In a live pi session: <code>/reload</code>.</p></div>
+      </div>
+    </section>
+
+    <section class="page-next"><p>Ready to attach the reflex arc?</p><a href="/install/">04 // install from the tap →</a></section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // rag</p><div><a href="/">home</a><a href="/vagus/">vagus</a><a href="/install/">install</a></div><p>retrieve locally // judge honestly // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>

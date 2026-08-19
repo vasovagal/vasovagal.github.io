@@ -1,8 +1,8 @@
 # vasovagal.github.io
 
-Static landing page for the [vasovagal](https://github.com/vasovagal) GitHub organization: [vagus](https://github.com/vasovagal/vagus), [corti](https://github.com/vasovagal/corti), and the shared [Homebrew tap](https://github.com/vasovagal/homebrew-tap).
+Static multi-page site for the [vasovagal](https://github.com/vasovagal) GitHub organization: [vagus](https://github.com/vasovagal/vagus), [corti](https://github.com/vasovagal/corti), the retrieval field report, and the shared [Homebrew tap](https://github.com/vasovagal/homebrew-tap).
 
-No generator is required. GitHub Pages serves the checked-in HTML, CSS, JavaScript, and images from `main`.
+No generator is required. GitHub Pages serves the checked-in HTML, CSS, JavaScript, and images from `main`. The focused routes are `/vagus/`, `/corti/`, `/rag/`, and `/install/`; the home page stays a short router rather than one large brochure scroller.
 
 ## Preview and check
 
@@ -27,7 +27,7 @@ Playwright serves the real React UI, replaces only Tauri IPC with non-personal d
 For now, update this site manually after releases:
 
 1. Pull current `main` in `vagus`, `corti`, and `homebrew-tap`.
-2. Confirm both release tags and tap entries, then update version/date links in `index.html`.
+2. Confirm both release tags and tap entries, then update version/date references across the HTML pages.
 3. Regenerate the Corti screenshots.
 4. Re-run the corpus measurements if publishing new benchmark numbers; keep private labels and reports out of this public repository.
 5. Run `npm test`, preview desktop/mobile, then commit and push `main`.

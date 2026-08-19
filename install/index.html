@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install Vasovagal // Homebrew tap</title>
+  <meta name="description" content="Install Vagus and Corti from the shared vasovagal Homebrew tap.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://vasovagal.github.io/install/">
+  <meta property="og:title" content="Tap in // install Vagus and Corti"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <link rel="canonical" href="https://vasovagal.github.io/install/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage install-page">
+  <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a href="/rag/">03.rag</a><a class="active" aria-current="page" href="/install/">04.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/homebrew-tap">tap↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell install-page-hero" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal"><p class="section-index">04 // GRAFT PROCEDURE</p><h1 id="page-title">TAP IN.<br>KEEP YOUR BRAIN.</h1><p>Both projects ship through the shared <a href="https://github.com/vasovagal/homebrew-tap">vasovagal/tap</a>. One tap, one CLI, one menu-bar app.</p></div>
+      <aside class="page-readout reveal delay-1"><span>VAGUS</span><b>0.13.0</b><small>formula</small><hr><span>CORTI</span><b>0.13.0</b><small>cask</small><hr><span>HOST</span><b>APPLE SILICON</b><small>full pair</small></aside>
+    </section>
+
+    <section class="page-section section-shell install-focus" aria-labelledby="bootstrap-title">
+      <div class="install-copy reveal"><p class="section-index">BOOTSTRAP</p><h2 id="bootstrap-title">MEMORY + EAR.<br>FIVE COMMANDS.</h2><p>The tap points at published GitHub release artifacts and pins their checksums. Vagus also ships Linux arm64 and x86_64 builds; Corti requires Apple Silicon and macOS 15 or newer.</p></div>
+      <div class="install-terminal reveal delay-1" data-copy-group>
+        <div class="terminal-bar"><span></span><span></span><span></span><b>bootstrap.sh</b><i>arm64 macOS</i></div>
+        <pre><code><span class="dim"># connect the tap</span>
+<span class="prompt">$</span> brew tap vasovagal/tap
+<span class="prompt">$</span> brew trust --tap vasovagal/tap  <span class="dim"># Homebrew 6+</span>
+
+<span class="dim"># install the memory + the ear</span>
+<span class="prompt">$</span> brew install vagus
+<span class="prompt">$</span> brew install --cask corti
+
+<span class="dim"># wire Markdown to iCloud</span>
+<span class="prompt">$</span> vagus init --icloud
+<span class="ok">✓ nervous system online</span></code></pre>
+        <button type="button" class="copy-all" data-copy="brew tap vasovagal/tap&#10;brew trust --tap vasovagal/tap&#10;brew install vagus&#10;brew install --cask corti&#10;vagus init --icloud">copy bootstrap</button>
+      </div>
+      <div class="requirements reveal"><span>VAGUS</span><p>macOS arm64 · Linux arm64 / x86_64</p><span>CORTI</span><p>Apple Silicon · macOS 15+ · Microphone + System Audio permissions</p><span>STATUS</span><p>pre-1.0 · Corti is ad-hoc signed / not notarized · inspect the source</p></div>
+    </section>
+
+    <section class="page-section section-shell post-install" aria-labelledby="next-title">
+      <div class="section-heading-row reveal"><p class="section-index">AFTER THE GRAFT</p><h2 id="next-title">THREE QUICK CHECKS.</h2></div>
+      <div class="feature-grid">
+        <article class="wire-panel reveal"><span class="panel-number">01</span><h3>CHECK THE CACHE.</h3><p><code>vagus doctor</code> verifies the vault, local index separation, model presence, and vector identity without downloading anything.</p></article>
+        <article class="wire-panel reveal delay-1"><span class="panel-number">02</span><h3>INSTALL REFLEXES.</h3><p><code>vagus skills install</code> for Claude Code, then <code>vagus skills install --agent pi</code> for pi.</p></article>
+        <article class="wire-panel reveal delay-2"><span class="panel-number">03</span><h3>GRANT THE EAR.</h3><p>Launch Corti once and grant macOS Microphone and System Audio Recording permissions. Then join a call.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // install</p><div><a href="/">home</a><a href="/vagus/">vagus</a><a href="/corti/">corti</a></div><p>one tap // two organs // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>

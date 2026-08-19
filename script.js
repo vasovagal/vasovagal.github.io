@@ -1,6 +1,21 @@
 (() => {
   "use strict";
 
+  // Preserve links from the original one-page launch after splitting the site
+  // into focused routes.
+  const legacyRoutes = {
+    "#vagus": "/vagus/",
+    "#corti": "/corti/",
+    "#rag": "/rag/",
+    "#benchmark": "/rag/#benchmark",
+    "#skills": "/rag/#skills",
+    "#install": "/install/",
+  };
+  if ((location.pathname === "/" || location.pathname === "/index.html") && legacyRoutes[location.hash]) {
+    location.replace(legacyRoutes[location.hash]);
+    return;
+  }
+
   const reveal = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
