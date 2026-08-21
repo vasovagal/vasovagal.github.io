@@ -10,6 +10,7 @@ const pages = [
   "smart/index.html",
   "rag/index.html",
   "install/index.html",
+  "competition/index.html",
   "404.html",
 ];
 const documents = new Map();
@@ -69,6 +70,22 @@ const requiredFacts = [
 ];
 for (const fact of requiredFacts) {
   if (!combined.includes(fact)) throw new Error(`site is missing required fact: ${fact}`);
+}
+
+const competition = documents.get("competition/index.html");
+const competitionFacts = [
+  "OUR SO-CALLED COMPETITION",
+  "Compared from pinned repository snapshots",
+  "GBrain can run locally",
+  "PROJECT-REPORTED RETRIEVAL FIGURES",
+  "260c23a1c0457bdc8839fe0050ee7c3e865a2e35",
+  "b99f4c8b07780d2469608b03c7c301bd2beef271",
+];
+for (const fact of competitionFacts) {
+  if (!competition.includes(fact)) throw new Error(`competition page is missing required fact: ${fact}`);
+}
+if (!documents.get("index.html").includes('href="/competition/"')) {
+  throw new Error("home page does not route to /competition/");
 }
 
 const focusedRoutes = ["/vagus/", "/corti/", "/smart/", "/rag/", "/install/"];
