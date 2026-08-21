@@ -2973,6 +2973,24 @@ pre {
 }
 
 /* Our so-called competition // pinned architectural comparison */
+.competition-routes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.competition-routes .competition-route {
+  grid-template-columns: 1fr;
+  align-content: start;
+  min-height: 148px;
+  margin-top: 0;
+}
+
+.competition-routes .competition-route strong {
+  text-align: left;
+}
+
 .competition-route {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -3137,6 +3155,14 @@ pre {
   font-size: 11px;
 }
 
+.same-grid code,
+.project-claim code,
+.receipt-note code {
+  overflow-wrap: anywhere;
+  color: var(--green);
+  font-size: 0.92em;
+}
+
 .competition-showdown {
   padding-block: clamp(95px, 12vw, 160px);
   border-block: 1px solid var(--line);
@@ -3210,13 +3236,17 @@ pre {
   letter-spacing: 0.1em;
 }
 
-.gbrain-corner {
+.gbrain-corner,
+.qmd-corner {
   border-color: var(--muted);
 }
 
 .gbrain-corner header span,
 .gbrain-corner header small,
-.gbrain-corner > strong {
+.gbrain-corner > strong,
+.qmd-corner header span,
+.qmd-corner header small,
+.qmd-corner > strong {
   color: var(--muted);
 }
 
@@ -4334,6 +4364,10 @@ pre {
 }
 
 @media (max-width: 820px) {
+  .competition-routes {
+    grid-template-columns: 1fr;
+  }
+
   .competition-route {
     grid-template-columns: 1fr auto;
   }

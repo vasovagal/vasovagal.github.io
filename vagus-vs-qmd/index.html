@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Uncomfortably Close One // Vagus vs QMD</title>
+  <meta name="description" content="Vagus versus Tobi Lütke's QMD: two local Markdown search engines, one opinionated workflow, and a very real architectural contest.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="article"><meta property="og:url" content="https://vasovagal.github.io/vagus-vs-qmd/">
+  <meta property="og:title" content="The Uncomfortably Close One // Vagus vs QMD"><meta property="og:description" content="This time it really is competition: local Markdown, hybrid retrieval, local models, opposite product boundaries."><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://vasovagal.github.io/vagus-vs-qmd/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage competition-page">
+  <a class="skip-link" href="#main">skip_to_signal</a><div class="scanlines" aria-hidden="true"></div><div class="page-noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a href="/corti/">02.corti</a><a href="/smart/">03.how so smart?</a><a href="/rag/">04.rag</a><a href="/install/">05.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/vagus">vagus source↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell competition-page-hero" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal">
+        <p class="section-index">06B // COMPETITION FIELD REPORT</p>
+        <h1 id="page-title">THE UNCOMFORTABLY<br><span>CLOSE ONE.</span></h1>
+        <p><strong>QMD is not a platform team disguised as search.</strong> It is a local Markdown search engine with excellent ideas. Which means Vagus cannot dismiss it on zoning. This one has to fight on product boundaries.</p>
+        <div class="page-actions"><a class="button primary" href="#verdict">skip to the verdict →</a><a class="button ghost" href="#receipts">check the receipts ↓</a></div>
+      </div>
+      <aside class="page-readout reveal delay-1" aria-label="Comparison snapshot"><span>CASE</span><b>VAGUS v. QMD</b><small>actual category overlap</small><hr><span>SNAPSHOT</span><b>2026-08-20</b><small>pinned commits below</small><hr><span>PRELIMINARY RULING</span><b>THIS ONE COUNTS</b><small>workflow versus search substrate</small></aside>
+    </section>
+
+    <div class="signal-rail competition-rail" aria-hidden="true"><span>RUST</span><i>◆</i><span>TYPESCRIPT + NODE/BUN</span><i>◆</i><span>PARA</span><i>◆</i><span>COLLECTIONS</span><i>◆</i><span>ONNX + GGUF</span><i>◆</i><span>GGUF</span></div>
+
+    <section class="page-section section-shell competition-method" aria-labelledby="method-title">
+      <div class="section-heading-row reveal"><p class="section-index">BEFORE THE TRASH TALK</p><h2 id="method-title">PIN THE CODE.<br>DECLARE THE DEBT.</h2></div>
+      <div class="method-grid reveal delay-1">
+        <div><span>VAGUS</span><b>260c23a</b><code>v0.13.0</code></div><div><span>QMD</span><b>dbfd0b4</b><code>v2.8.3</code></div>
+        <p><strong>This is not a retrieval benchmark.</strong> Source was inspected at pinned commits. QMD's documented Node install was measured in a clean Linux/arm64 container. Model sizes are project-reported unless explicitly marked measured. No quality winner is invented from two unrelated evals.</p>
+      </div>
+    </section>
+
+    <section class="page-section section-shell competition-same" aria-labelledby="same-title">
+      <div class="section-heading-row reveal"><p class="section-index">SHARED DNA</p><h2 id="same-title">NO, REALLY.<br>THEY RHYME.</h2></div>
+      <div class="same-grid">
+        <article class="reveal"><span>01</span><h3>MARKDOWN IN.</h3><p>Both index files you can read, move, diff, and keep after the search engine is gone.</p></article>
+        <article class="reveal delay-1"><span>02</span><h3>BM25 + VECTORS.</h3><p>Both refuse the false choice between exact terms and semantic similarity.</p></article>
+        <article class="reveal delay-2"><span>03</span><h3>RRF IN THE MIDDLE.</h3><p>Both fuse independent retrieval lists with reciprocal-rank fusion.</p></article>
+        <article class="reveal"><span>04</span><h3>LOCAL MODELS.</h3><p>Both download model assets once, cache them locally, and infer on your hardware.</p></article>
+        <article class="reveal delay-1"><span>05</span><h3>AGENT OUTPUT.</h3><p>Both expose structured retrieval meant to feed an agent rather than another notes GUI.</p></article>
+        <article class="reveal delay-2"><span>06</span><h3>DERIVED INDEX.</h3><p>Both keep a local SQLite-backed projection beside durable source files.</p></article>
+      </div>
+    </section>
+
+    <section class="language-fight" aria-labelledby="credit-title">
+      <div class="section-shell language-layout">
+        <div class="language-copy reveal"><p class="section-index">DISCLOSE THE BLOODLINE</p><h2 id="credit-title">QMD ISN'T JUST<br>A RIVAL.</h2><p>It is upstream influence.</p></div>
+        <blockquote class="reveal delay-1"><p>Vagus <strong>--smart</strong> uses Tobi's QMD query-expansion GGUF. Pretending otherwise would be marketing cosplay.</p><footer>VERIFIED IN VAGUS SOURCE. <strong>ATTRIBUTION IS NOT SURRENDER.</strong></footer></blockquote>
+        <p class="fairness-interrupt reveal"><strong>THE DISTINCTION:</strong> Vagus shares a query-expansion model with QMD, but wraps retrieval in an opinionated PARA capture → search → human-approved filing workflow. QMD stays a broader collection search engine and reusable SDK.</p>
+      </div>
+    </section>
+
+    <section class="competition-showdown" aria-labelledby="showdown-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">THE ACTUAL MATCHUP</p><h2 id="showdown-title">SEARCH ENGINE.<br>OR MEMORY WORKFLOW.</h2></div>
+        <div class="duel-grid">
+          <article class="duel-card vagus-corner reveal"><header><span>BLUE CORNER // RUST</span><b>VAGUS</b><small>OPINIONATED SECOND BRAIN</small></header><p>Capture into one PARA vault. Retrieve evidence. Propose the file move. Let the human approve it.</p><ul><li>one native executable</li><li>fixed PARA + iCloud path</li><li>BM25 + vectors + optional rerank/smart</li><li>no MCP server, SDK, or daemon</li></ul><strong>THE WORKFLOW IS THE PRODUCT.</strong></article>
+          <div class="versus-mark" aria-hidden="true"><span>V</span><i>S</i></div>
+          <article class="duel-card qmd-corner reveal delay-1"><header><span>RED CORNER // TYPESCRIPT</span><b>QMD</b><small>LOCAL SEARCH SUBSTRATE</small></header><p>Point collections at notes, docs, meetings, or code. Expand, retrieve, rerank, and expose the result over CLI, SDK, or MCP.</p><ul><li>SQLite FTS5 + sqlite-vec</li><li>three local GGUF models</li><li>AST chunking for four code languages</li><li>CLI + SDK + stdio/HTTP MCP</li></ul><strong>THE SEARCH SURFACE IS THE PRODUCT.</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section section-shell competition-same" id="install-audit" aria-labelledby="install-title">
+      <div class="section-heading-row reveal"><p class="section-index">EXHIBIT 00 // CLEAN CONTAINERS</p><h2 id="install-title">THE TARBALL IS SMALL.<br>THE TREE ISN'T.</h2></div>
+      <div class="same-grid">
+        <article class="reveal"><span>QMD // MEASURED</span><h3>27.27 SECONDS.</h3><p><code>npm install -g @tobilu/qmd@2.8.3</code> on Node 22, excluding base-image pull.</p></article>
+        <article class="reveal delay-1"><span>QMD // MEASURED</span><h3>154 PACKAGES.</h3><p>NPM's install report. The QMD tree contained 186 package manifests.</p></article>
+        <article class="reveal delay-2"><span>QMD // MEASURED</span><h3>411 MB.</h3><p>Writable-container growth after install and an empty 4 KB index.</p></article>
+        <article class="reveal"><span>QMD // MEASURED</span><h3>229.0 MB.</h3><p>The installed QMD package tree. The published package itself reports only 0.91 MB unpacked.</p></article>
+        <article class="reveal delay-1"><span>QMD // MEASURED</span><h3>4,479 FILES.</h3><p>Native addons, llama.cpp, grammars, TypeScript, MCP, SQLite, and package machinery.</p></article>
+        <article class="reveal delay-2"><span>QMD // PROJECT-REPORTED</span><h3>~2.04 GB MODELS.</h3><p>~300 MB embedder + ~640 MB reranker + ~1.1 GB query-expansion model.</p></article>
+      </div>
+      <div class="comparison-table-wrap reveal">
+        <table class="comparison-table">
+          <caption class="sr-only">Measured installation footprint comparison of Vagus and QMD</caption>
+          <thead><tr><th scope="col">Bill</th><th scope="col">Vagus</th><th scope="col">QMD</th><th scope="col">What it means</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Install artifact</th><td data-label="Vagus">15.34 MB compressed macOS release; 46.34 MB binary; six cellar files; no Homebrew formula dependencies.</td><td data-label="QMD">0.91 MB published package expands with dependencies to a measured 229.0 MB tree atop Node.</td><td data-label="What it means">Package metadata can be tiny while runtime reality arrives in 154 follow-up acts.</td></tr>
+            <tr><th scope="row">First setup</th><td data-label="Vagus"><code>vagus init --icloud</code>: measured 0.29 seconds, five folders, one symlink, zero regular files.</td><td data-label="QMD">Add each collection, optionally add context, then run <code>qmd embed</code>. Empty status creates a 4 KB index.</td><td data-label="What it means">Vagus chooses your filing system. QMD makes you describe your corpora.</td></tr>
+            <tr><th scope="row">Model disk</th><td data-label="Vagus">Measured embedder cache: 1.256 GB. Every optional tier populated: 2.704 GB.</td><td data-label="QMD">Documented full three-model cache: ~2.04 GB. Plain keyword search avoids model downloads.</td><td data-label="What it means">Vagus wins package size, not full-cache size. QMD's full reported model set is smaller.</td></tr>
+            <tr><th scope="row">Runtime aging</th><td data-label="Vagus">Native release has no user-managed language runtime; maintainer still carries 512 locked Rust packages and native ML/search crates.</td><td data-label="QMD">Node ≥22, native ABI modules, llama.cpp/GPU backends, SQLite extensions, and tree-sitter grammars evolve together.</td><td data-label="What it means">Compiled does not mean simple to build. Interpreted does not mean simple to keep compatible.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="project-claim reveal" aria-label="Bun-only install observation"><span>MEASURED FAILURE // NOT A UNIVERSAL CLAIM</span><b>THE BUN-ONLY CONTAINER DID NOT INSTALL</b><p>On clean <code>oven/bun:1</code> Linux/arm64, the documented Bun route failed after 141.81 seconds when a tree-sitter native build could not find Python; its installed launcher then required <code>node</code>. The Node 22 route succeeded. This is one container shape, not every Bun host.</p></aside>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="matrix-title">
+      <div class="section-heading-row reveal"><p class="section-index">EXHIBIT A</p><h2 id="matrix-title">PUT THE TRADEOFFS<br>UNDER OATH.</h2></div>
+      <div class="comparison-table-wrap reveal">
+        <table class="comparison-table">
+          <caption class="sr-only">Architectural comparison of Vagus and QMD</caption>
+          <thead><tr><th scope="col">Question</th><th scope="col">Vagus</th><th scope="col">QMD</th><th scope="col">What it costs</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Job description</th><td data-label="Vagus">Personal PARA capture, retrieval, and assisted filing.</td><td data-label="QMD">Local search across arbitrary named collections and project-local indexes.</td><td data-label="What it costs">A product opinion versus a reusable substrate.</td></tr>
+            <tr><th scope="row">Retrieval</th><td data-label="Vagus">BM25 + vectors → RRF; optional cross-encoder rerank and local typed rewrite.</td><td data-label="QMD">BM25 + vectors + typed lex/vec/HyDE expansion → weighted RRF → local reranking.</td><td data-label="What it costs">QMD owns the richer default quality pipeline. Vagus keeps complexity opt-in.</td></tr>
+            <tr><th scope="row">Chunking</th><td data-label="Vagus">Markdown-aware note and chunk retrieval, bounded around one vault.</td><td data-label="QMD">Markdown boundaries plus optional AST chunking for TypeScript, Python, Go, and Rust.</td><td data-label="What it costs">QMD is better shaped for mixed docs-and-code corpora.</td></tr>
+            <tr><th scope="row">Interfaces</th><td data-label="Vagus">CLI and JSON. The host agent owns orchestration and final answers.</td><td data-label="QMD">CLI, typed SDK, MCP stdio, and optional long-lived HTTP daemon.</td><td data-label="What it costs">QMD integrates farther; Vagus exposes less to maintain or secure.</td></tr>
+            <tr><th scope="row">Process model</th><td data-label="Vagus">Fresh process per command; models reload; no server mode.</td><td data-label="QMD">Fresh CLI by default; optional HTTP daemon keeps models warm in VRAM.</td><td data-label="What it costs">Lower idle surface versus lower repeated model-load latency.</td></tr>
+            <tr><th scope="row">Organization</th><td data-label="Vagus">One fixed PARA tree with human-approved transitions.</td><td data-label="QMD">Collections, masks, contexts, project config, model overrides, and update hooks.</td><td data-label="What it costs">Opinionated calm versus configurable reach.</td></tr>
+            <tr><th scope="row">Security shape</th><td data-label="Vagus">No listener and no collection shell hooks. Downloads models and reads/writes the vault.</td><td data-label="QMD">Optional unauthenticated HTTP surface and arbitrary per-collection update commands, both documented with guardrails.</td><td data-label="What it costs">Features create threat classes. Guardrails reduce them; deletion removes them.</td></tr>
+            <tr><th scope="row">Data</th><td data-label="Vagus">Markdown is authoritative; indexes rebuild. Usage/provenance in SQLite is the disclosed exception.</td><td data-label="QMD">Source files stay external; content-addressed SQLite stores FTS, vectors, mappings, and LLM cache.</td><td data-label="What it costs">Both preserve files. Both still have local state worth understanding.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="language-fight" aria-labelledby="language-title">
+      <div class="section-shell language-layout">
+        <div class="language-copy reveal"><p class="section-index">RUST VS TYPESCRIPT // ROUND TWO</p><h2 id="language-title">THIS TIME,<br>SCOPE IS CLOSE.</h2><p>So installation and product boundary actually matter.</p></div>
+        <blockquote class="reveal delay-1"><p>QMD proves TypeScript can ship a serious local search engine. Its native graph also proves the runtime never travels alone.</p><footer>VAGUS PROVES ONE BINARY CAN HIDE A LARGE BUILD GRAPH. <strong>NO HALOS TODAY.</strong></footer></blockquote>
+        <div class="process-duel reveal">
+          <div><span>VAGUS // SUPPORTED MAC</span><code><i>$</i> brew tap vasovagal/tap<br><i>$</i> brew trust --tap vasovagal/tap <small># Homebrew 6+</small><br><i>$</i> brew install vagus<br><i>$</i> vagus init --icloud<br><b>→ five PARA folders + one symlink</b></code></div>
+          <div><span>QMD // DOCUMENTED NODE PATH</span><code><i>$</i> npm install -g @tobilu/qmd<br><i>$</i> qmd collection add ~/notes --name notes<br><i>$</i> qmd embed<br><b>→ collection index + model cache</b></code></div>
+        </div>
+        <p class="fairness-interrupt reveal"><strong>FAIRNESS INTERRUPT:</strong> QMD does not require a daemon. It can run keyword-only without downloading models. Its optional shared MCP server is a genuine advantage when repeated CLI model loading is the bottleneck.</p>
+      </div>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="due-title">
+      <div class="section-heading-row reveal"><p class="section-index">NO STRAW MEN ALLOWED</p><h2 id="due-title">GIVE QMD<br>ITS DUE.</h2></div>
+      <div class="due-grid">
+        <article class="reveal"><span>01 // RETRIEVAL</span><p>Typed query expansion, HyDE, weighted RRF, local reranking, and response caches form a richer end-to-end search pipeline.</p></article>
+        <article class="reveal delay-1"><span>02 // REUSE</span><p>A real SDK plus CLI and MCP surfaces make QMD useful inside other products instead of only as one finished workflow.</p></article>
+        <article class="reveal delay-2"><span>03 // CORPUS RANGE</span><p>Named collections, project indexes, contexts, code grammars, masks, hooks, and model overrides cover work Vagus intentionally refuses.</p></article>
+      </div>
+      <aside class="project-claim reveal"><span>PROJECT-REPORTED MODEL FOOTPRINT</span><b>~2.04 GB // THREE LOCAL MODELS</b><p>QMD documentation reports ~300 MB embedding, ~640 MB reranking, and ~1.1 GB generation assets. URLs and roles were verified in source; files were not downloaded for this audit.</p></aside>
+    </section>
+
+    <section class="competition-verdict" id="verdict" aria-labelledby="verdict-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">THE RULING</p><h2 id="verdict-title">CHOOSE YOUR<br>BOUNDARY.</h2></div>
+        <div class="choice-grid">
+          <article class="reveal"><span>CHOOSE QMD IF…</span><h3>SEARCH IS<br>THE PLATFORM.</h3><p>You need multiple corpora, code-aware chunks, a reusable SDK, local expansion and reranking, MCP, or a warm shared model process.</p><strong>PAY IN RUNTIME, NATIVE MODULES, CONFIGURATION, AND MODEL LIFECYCLE.</strong></article>
+          <article class="reveal delay-1"><span>CHOOSE VAGUS IF…</span><h3>THE WORKFLOW<br>IS THE POINT.</h3><p>You want one PARA vault, one native executable, iCloud scaffolding, explicit capture and filing, and an agent that receives evidence instead of a search platform.</p><strong>PAY IN OPINIONATED STRUCTURE, FEWER INTERFACES, AND A LARGER FULL MODEL CACHE.</strong></article>
+        </div>
+        <div class="final-ruling reveal"><p>OUR SO-CALLED COMPETITION?</p><h3>THIS ONE IS.</h3><p>QMD is the stronger general local search substrate. Vagus is the smaller, sharper second-brain workflow. If Vagus cannot make that workflow more useful than QMD plus a shell script, it deserves to lose.</p></div>
+      </div>
+    </section>
+
+    <section class="page-section section-shell receipts" id="receipts" aria-labelledby="receipts-title">
+      <div class="section-heading-row reveal"><p class="section-index">PINNED EVIDENCE</p><h2 id="receipts-title">DON'T TRUST THE COPY.<br>READ THE CODE.</h2></div>
+      <ol class="source-ledger reveal">
+        <li><span>V01</span><div><a href="https://github.com/vasovagal/vagus/blob/260c23a1c0457bdc8839fe0050ee7c3e865a2e35/README.md#L58-L85">Vagus install and model-footprint disclosure ↗</a><small>README.md // pinned</small></div></li>
+        <li><span>V02</span><div><a href="https://github.com/vasovagal/vagus/blob/260c23a1c0457bdc8839fe0050ee7c3e865a2e35/src/init.rs#L15-L78">Vagus PARA and iCloud initialization contract ↗</a><small>src/init.rs // pinned</small></div></li>
+        <li><span>V03</span><div><a href="https://github.com/vasovagal/vagus/blob/260c23a1c0457bdc8839fe0050ee7c3e865a2e35/src/rewrite.rs#L20-L27">Vagus smart-search use of QMD's query-expansion model ↗</a><small>src/rewrite.rs // pinned</small></div></li>
+        <li><span>V04</span><div><a href="https://github.com/vasovagal/vagus/blob/260c23a1c0457bdc8839fe0050ee7c3e865a2e35/Cargo.toml#L30-L76">Vagus features, Rust dependencies, and native build choices ↗</a><small>Cargo.toml // pinned</small></div></li>
+        <li><span>Q01</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/README.md#L1-L56">QMD purpose, retrieval pipeline, and quick start ↗</a><small>README.md // pinned</small></div></li>
+        <li><span>Q02</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/package.json#L1-L104">QMD package, runtime, native dependencies, and Node requirement ↗</a><small>package.json // pinned</small></div></li>
+        <li><span>Q03</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/README.md#L543-L564">QMD runtime prerequisites and three model sizes ↗</a><small>README.md // project-reported sizes // pinned</small></div></li>
+        <li><span>Q04</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/bin/qmd#L78-L159">QMD Node/Bun launcher and native-ABI routing ↗</a><small>bin/qmd // pinned</small></div></li>
+        <li><span>Q05</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/src/store.ts#L4478-L4620">QMD typed expansion, rerank cache, and RRF ↗</a><small>src/store.ts // pinned</small></div></li>
+        <li><span>Q06</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/src/db.ts#L25-L55">QMD SQLite/sqlite-vec runtime fallback ↗</a><small>src/db.ts // pinned</small></div></li>
+        <li><span>Q07</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/src/llm.ts#L279-L326">QMD default model URIs and cache location ↗</a><small>src/llm.ts // pinned</small></div></li>
+        <li><span>Q08</span><div><a href="https://github.com/tobi/qmd/blob/dbfd0b4736aeaf761d1a16ca8e424f071df8feb9/README.md#L132-L189">QMD optional HTTP daemon and security caveats ↗</a><small>README.md // pinned</small></div></li>
+      </ol>
+      <p class="receipt-note">Lab snapshot: Docker Server 29.2.1; Node 22.23.2 on <code>node:22-bookworm</code> digest <code>sha256:0557ac…</code>; Bun 1.4.0 on <code>oven/bun:1</code> digest <code>sha256:5ff609…</code>. Both disposable containers and pulled images were removed after measurement. Sizes are decimal MB/GB.</p>
+    </section>
+
+    <section class="page-next"><p>Want the opponent with the platform team?</p><a href="/vagus-vs-gbrain/">read Vagus vs GBrain →</a></section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // competitive dissection</p><div><a href="/">home</a><a href="/vagus-vs-gbrain/">vs gbrain</a><a href="#receipts">receipts</a></div><p>credit the prior art // choose the boundary // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>

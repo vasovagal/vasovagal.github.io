@@ -10,7 +10,8 @@ const pages = [
   "smart/index.html",
   "rag/index.html",
   "install/index.html",
-  "competition/index.html",
+  "vagus-vs-gbrain/index.html",
+  "vagus-vs-qmd/index.html",
   "404.html",
 ];
 const documents = new Map();
@@ -72,20 +73,41 @@ for (const fact of requiredFacts) {
   if (!combined.includes(fact)) throw new Error(`site is missing required fact: ${fact}`);
 }
 
-const competition = documents.get("competition/index.html");
-const competitionFacts = [
-  "OUR SO-CALLED COMPETITION",
-  "Compared from pinned repository snapshots",
-  "GBrain can run locally",
-  "PROJECT-REPORTED RETRIEVAL FIGURES",
-  "260c23a1c0457bdc8839fe0050ee7c3e865a2e35",
-  "b99f4c8b07780d2469608b03c7c301bd2beef271",
-];
-for (const fact of competitionFacts) {
-  if (!competition.includes(fact)) throw new Error(`competition page is missing required fact: ${fact}`);
+const fieldReports = new Map([
+  ["vagus-vs-gbrain/index.html", [
+    "OUR SO-CALLED COMPETITION",
+    "Compared from pinned repository snapshots",
+    "188 PACKAGES",
+    "Every one was already present in the untouched Bun base image",
+    "TRIVY 0.74.0",
+    "YEAR FIVE IS",
+    "260c23a1c0457bdc8839fe0050ee7c3e865a2e35",
+    "b99f4c8b07780d2469608b03c7c301bd2beef271",
+  ]],
+  ["vagus-vs-qmd/index.html", [
+    "THE UNCOMFORTABLY",
+    "THIS ONE IS",
+    "154 PACKAGES",
+    "THE BUN-ONLY CONTAINER DID NOT INSTALL",
+    "Vagus <strong>--smart</strong> uses",
+    "native ABI modules",
+    "260c23a1c0457bdc8839fe0050ee7c3e865a2e35",
+    "dbfd0b4736aeaf761d1a16ca8e424f071df8feb9",
+  ]],
+]);
+for (const [page, facts] of fieldReports) {
+  for (const fact of facts) {
+    if (!documents.get(page).includes(fact)) throw new Error(`${page} is missing required fact: ${fact}`);
+  }
 }
-if (!documents.get("index.html").includes('href="/competition/"')) {
-  throw new Error("home page does not route to /competition/");
+for (const route of ["/vagus-vs-gbrain/", "/vagus-vs-qmd/"]) {
+  if (!documents.get("index.html").includes(`href="${route}"`)) {
+    throw new Error(`home page does not route to ${route}`);
+  }
+}
+const legacyCompetition = await readFile(join(root, "competition/index.html"), "utf8");
+if (!legacyCompetition.includes('url=/vagus-vs-gbrain/')) {
+  throw new Error("legacy /competition/ route does not redirect to /vagus-vs-gbrain/");
 }
 
 const focusedRoutes = ["/vagus/", "/corti/", "/smart/", "/rag/", "/install/"];
