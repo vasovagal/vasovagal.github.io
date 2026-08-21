@@ -12,6 +12,7 @@ const pages = [
   "install/index.html",
   "vagus-vs-gbrain/index.html",
   "vagus-vs-qmd/index.html",
+  "going-live-with-corti/index.html",
   "404.html",
 ];
 const documents = new Map();
@@ -108,6 +109,21 @@ for (const route of ["/vagus-vs-gbrain/", "/vagus-vs-qmd/"]) {
 const legacyCompetition = await readFile(join(root, "competition/index.html"), "utf8");
 if (!legacyCompetition.includes('url=/vagus-vs-gbrain/')) {
   throw new Error("legacy /competition/ route does not redirect to /vagus-vs-gbrain/");
+}
+
+const goingLive = documents.get("going-live-with-corti/index.html");
+for (const fact of [
+  "RELEASE GATE RED",
+  "MOCKED UI SCREENSHOT",
+  "No paid-model request was made",
+  "https://github.com/vasovagal/corti/issues/112",
+  "https://github.com/vasovagal/corti/pull/113",
+  "Website-delivery phase tokens: unavailable",
+]) {
+  if (!goingLive.includes(fact)) throw new Error(`going-live page is missing required truth label: ${fact}`);
+}
+if (!documents.get("corti/index.html").includes('href="/going-live-with-corti/"')) {
+  throw new Error("Corti page does not link to the Going LIVE field note");
 }
 
 const focusedRoutes = ["/vagus/", "/corti/", "/smart/", "/rag/", "/install/"];

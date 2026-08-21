@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Going LIVE with Corti // implementation field note</title>
+  <meta name="description" content="A measured implementation field note for Corti's optional hosted transcript cleanup, final rewrite, live assistant, provider boundaries, and still-red release gate.">
+  <meta name="theme-color" content="#020805">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://vasovagal.github.io/going-live-with-corti/">
+  <meta property="og:title" content="Going LIVE with Corti">
+  <meta property="og:description" content="Raw first. Optional hosted text second. The implementation, measurements, mocked UI, provider truth, and the release gate that is still red.">
+  <meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://vasovagal.github.io/going-live-with-corti/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+</head>
+<body class="subpage live-note-page">
+  <a class="skip-link" href="#main">skip_to_signal</a>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
+    <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a class="active" href="/corti/">02.corti</a><a href="/smart/">03.how so smart?</a><a href="/rag/">04.rag</a><a href="/install/">05.install</a></nav>
+    <a class="github-link" href="https://github.com/vasovagal/corti/pull/113">draft pr #113↗</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-shell live-note-hero" aria-labelledby="page-title">
+      <div class="page-hero-copy reveal">
+        <p class="section-index">07 // CORTI IMPLEMENTATION FIELD NOTE // <time datetime="2026-08-21">2026.08.21</time></p>
+        <h1 id="page-title">GOING <span>LIVE</span><br>WITH CORTI.</h1>
+        <p><strong>Raw first. Optional hosted text second.</strong> Corti now has a branch that can clean finalized transcript rows, run a stronger final rewrite, and keep a bounded live assistant beside the call. This is an implementation report—not a release announcement.</p>
+        <div class="page-actions"><a class="button primary" href="https://github.com/vasovagal/corti/pull/113">inspect draft PR #113 ↗</a><a class="button ghost" href="https://github.com/vasovagal/corti/issues/112">read issue #112 ↗</a></div>
+      </div>
+      <aside class="page-readout live-gate-readout reveal delay-1" aria-label="Current implementation and release status">
+        <span>BRANCH TIP</span><b>8891173</b><small>implemented · pushed</small>
+        <hr><span>SOURCE + CI</span><b class="status-pass">GREEN</b><small>tip checks passed</small>
+        <hr><span>RELEASE GATE</span><b class="status-stop">RED</b><small>DMG unavailable · PR remains draft</small>
+      </aside>
+    </section>
+
+    <div class="signal-rail live-note-rail" aria-hidden="true"><span>RAW FIRST</span><i>◆</i><span>TEXT ONLY</span><i>◆</i><span>DEFAULT OFF</span><i>◆</i><span>NO PAID CALLS</span><i>◆</i><span>DRAFT PR</span></div>
+
+    <section class="page-section section-shell truth-section" aria-labelledby="truth-title">
+      <div class="section-heading-row reveal"><p class="section-index">READ THE LABELS BEFORE THE SCREENSHOTS</p><h2 id="truth-title">WHAT KIND<br>OF TRUE?</h2></div>
+      <ul class="truth-key reveal delay-1" aria-label="Claim labels used on this page">
+        <li><span class="truth-chip implemented">IMPLEMENTED</span><p>Present in Corti branch tip <a href="https://github.com/vasovagal/corti/commit/8891173f13d450e4842984788c1851abb80ce7c6">8891173</a>.</p></li>
+        <li><span class="truth-chip measured">MEASURED</span><p>Recorded by the branch's pinned verification run.</p></li>
+        <li><span class="truth-chip mocked">MOCKED UI</span><p>Real React code rendered with deterministic synthetic fixtures.</p></li>
+        <li><span class="truth-chip future">FUTURE / GATED</span><p>Designed or partially wired, but not a production availability claim.</p></li>
+      </ul>
+      <article class="release-blocker reveal" aria-labelledby="blocker-title">
+        <div><span class="truth-chip blocked">RELEASE GATE RED</span><h3 id="blocker-title">THE APP BUILT.<br>THE DMG DID NOT.</h3></div>
+        <p>The canonical Tauri bundle command produced a signed app that passed strict verification, then Finder's styling AppleScript timed out with <code>-1712</code>. The exact DMG gate failed twice. No current DMG size is inferred, no new release is claimed, and <a href="https://github.com/vasovagal/corti/pull/113">PR #113</a> remains a draft even though source checks and GitHub CI are green.</p>
+      </article>
+    </section>
+
+    <section class="page-section section-shell live-visual-lead" aria-labelledby="visual-title">
+      <div class="section-heading-row reveal"><p class="section-index">THE NEW LIVE SURFACE</p><h2 id="visual-title">RAW. CLEAN.<br>CHANGES.</h2></div>
+      <p class="long-lede reveal">The live reader publishes raw rows before optional cleanup. Accepted text can be read cleanly or inspected as a semantic diff; failures remain visibly raw. The assistant and content-free diagnostics share the window without becoming transcript authority.</p>
+      <figure class="live-note-shot hero-shot reveal delay-1">
+        <a href="/assets/going-live-corti/live-diff-cost-desktop.webp" aria-label="Open the full mocked desktop live transcript screenshot">
+          <picture>
+            <source media="(max-width: 700px)" srcset="/assets/going-live-corti/live-diff-cost-narrow.webp" width="720" height="1561">
+            <img src="/assets/going-live-corti/live-diff-cost-desktop.webp" width="1920" height="1230" fetchpriority="high" decoding="async" alt="Mocked Corti UI showing synthetic Raw, Clean, and Changes transcript rows, an assistant sidebar, and synthetic content-free diagnostics">
+          </picture>
+        </a>
+        <figcaption><strong>MOCKED UI SCREENSHOT.</strong> Real React frontend; deterministic synthetic Tauri fixture. Every transcript, provider state, price, latency, and token value visible inside the image is fixture data—not a measurement and not a live provider request.</figcaption>
+      </figure>
+    </section>
+
+    <section class="live-invariant" aria-labelledby="invariant-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">IMPLEMENTED // THE NON-NEGOTIABLE PATH</p><h2 id="invariant-title">THE MODEL<br>NEVER GETS AUDIO.</h2></div>
+        <div class="invariant-path reveal" aria-label="Implemented Corti hosted post-processing path">
+          <div><small>01 // LOCAL OR AWS ASR</small><b>RAW TEXT</b><span>published immediately</span></div><i aria-hidden="true">→</i>
+          <div><small>02 // BOUNDED HANDOFF</small><b>SELECTED TEXT</b><span>optional and default-off</span></div><i aria-hidden="true">→</i>
+          <div><small>03 // HOSTED LANES</small><b>VALIDATE + FENCE</b><span>late text cannot apply</span></div><i aria-hidden="true">→</i>
+          <div><small>04 // SAFE PUBLICATION</small><b>CLEAN OR RAW</b><span>Vagus remains durable</span></div>
+        </div>
+        <p class="invariant-note reveal"><strong>Audio stays on the transcription path.</strong> Rewrite and question adapters receive typed text only. Capture, live ASR, and raw publication use bounded nonblocking handoff; hosted saturation, auth wait, cancellation, malformed output, timeout, or provider failure cannot erase the raw transcript.</p>
+      </div>
+    </section>
+
+    <section class="page-section section-shell" aria-labelledby="landed-title">
+      <div class="section-heading-row reveal"><p class="section-index">IMPLEMENTED AT 8891173</p><h2 id="landed-title">WHAT ACTUALLY<br>LANDED.</h2></div>
+      <div class="landed-grid">
+        <article class="reveal"><span class="truth-chip implemented">IMPLEMENTED</span><h3>LIVE CLEANUP.</h3><p>Finalized phrase rows enter a single-flight, newest-pending lane after raw publication. Complete generation fences reject stale text while retaining terminal accounting.</p></article>
+        <article class="reveal delay-1"><span class="truth-chip implemented">IMPLEMENTED</span><h3>SAFE FINAL.</h3><p>A stronger deterministic-chunked pass settles before the batch filing checkpoint or a live Vagus note's final state flip. Failure files validated clean-or-raw text instead of blocking.</p></article>
+        <article class="reveal"><span class="truth-chip implemented">IMPLEMENTED</span><h3>CONTROL + PRIVACY.</h3><p>Connection does not enable egress. Master, lane, model, steering, word-bank, cache, and repeated-question controls are revisioned; first enable requires persisted disclosure.</p></article>
+        <article class="reveal delay-1"><span class="truth-chip implemented">IMPLEMENTED</span><h3>ASSISTANT + HISTORY.</h3><p>One pinned template and a bounded visible ad-hoc queue stay session-only. Content-free queue history retains typed outcomes, nullable usage and cost, cache source, and fine timing—not prompts or transcript bodies.</p></article>
+        <article class="reveal"><span class="truth-chip implemented">IMPLEMENTED</span><h3>RECOVERY BEFORE APPLY.</h3><p>Validated final output is durably encrypted before application. A crash-ambiguous dispatch is not repeated automatically, preventing a silent second paid attempt.</p></article>
+        <article class="reveal delay-1"><span class="truth-chip implemented">IMPLEMENTED</span><h3>ACCESSIBLE STATE.</h3><p>Desktop split view, a narrow focus-trapped drawer, focus restoration, semantic diffs, live regions, forced-colors support, and complete reduced-motion overrides are present and exercised by deterministic UI tests.</p></article>
+      </div>
+    </section>
+
+    <section class="page-section section-shell privacy-section" aria-labelledby="privacy-title">
+      <div class="privacy-copy reveal">
+        <p class="section-index">IMPLEMENTED // EGRESS IS A CHOICE</p>
+        <h2 id="privacy-title">CONNECTING<br>IS NOT ENABLING.</h2>
+        <p>The hosted tab states the boundary before provider cards: selected transcript text, unique words, steering, and questions may leave the Mac; audio does not. Direct keys and the hosted master key use non-synchronizing macOS Keychain items and never cross into React.</p>
+        <p>The production network path is additionally deny-by-default. A credential, an authenticated catalog, a selected model, persisted user controls, the encrypted store, and the explicit production arm must all agree before direct egress.</p>
+      </div>
+      <figure class="live-note-shot reveal delay-1">
+        <a href="/assets/going-live-corti/preferences-desktop.webp" aria-label="Open the full mocked Hosted rewrite settings screenshot">
+          <picture>
+            <source media="(max-width: 700px)" srcset="/assets/going-live-corti/preferences-narrow.webp" width="720" height="1507">
+            <img loading="lazy" decoding="async" src="/assets/going-live-corti/preferences-desktop.webp" width="1920" height="1334" alt="Mocked Corti Hosted rewrite settings showing the privacy boundary and documented versus blocked provider cards">
+          </picture>
+        </a>
+        <figcaption><strong>MOCKED UI SCREENSHOT.</strong> Synthetic provider, credential, project, model, tariff, and disclosure state. It demonstrates implemented presentation and control boundaries, not a connected production account.</figcaption>
+      </figure>
+    </section>
+
+    <section class="provider-section" aria-labelledby="providers-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">PROVIDER TRUTH // STATUS IS PART OF THE API</p><h2 id="providers-title">FIVE NAMES.<br>THREE POSTURES.</h2></div>
+        <p class="long-lede reveal"><strong>“Documented” means an adapter contract and tested wiring exist.</strong> It does not mean generally available, benchmarked, privacy-approved, tariffed, or proven against a real account. No paid-model request was made during implementation or verification.</p>
+        <div class="provider-grid">
+          <article class="provider-card documented reveal"><header><span>DOCUMENTED ADAPTER</span><h3>OPENAI DIRECT API</h3></header><p><strong>Implemented:</strong> exact account catalog filtering, structured streaming, usage/cache normalization, Keychain-backed app wiring, and deny-by-default production arming.</p><p><strong>Unavailable:</strong> approved real-account results, Corti quality/latency measurements, and production pricing. API billing is not subscription access.</p></article>
+          <article class="provider-card documented reveal delay-1"><header><span>DOCUMENTED ADAPTER</span><h3>ANTHROPIC DIRECT API</h3></header><p><strong>Implemented:</strong> paginated account catalog, structured streaming, usage/cache normalization, distinct API-billing credential wiring, and the same egress gates.</p><p><strong>Unavailable:</strong> approved real-account validation, quality/latency measurements, and a reviewed tariff match.</p></article>
+          <article class="provider-card gated reveal"><header><span>DOCUMENTED // PRODUCTION UNARMED</span><h3>GOOGLE VERTEX DIRECT API</h3></header><p><strong>Implemented:</strong> ADC semantics, injected auth tests, fixed-cadence recovery, newest-only catch-up, and the exact warning <code>gcloud token isn't armed</code>.</p><p><strong>Gated:</strong> the production app supplies an unarmed resolver and no live Vertex factory pending project, region, catalog, privacy, and service-readiness gates.</p></article>
+          <article class="provider-card experimental reveal delay-1"><header><span>EXPERIMENTAL // OFF</span><h3>CODEX APP-SERVER</h3></header><p>Broker and device-code interfaces compile only behind <code>codex-experimental</code>. The app supplies no ambient launcher or production provider factory. Production and non-coding support remain external blockers.</p></article>
+          <article class="provider-card blocked reveal"><header><span>BLOCKED DESCRIPTOR</span><h3>CLAUDE FREE / PRO / MAX</h3></header><p>There is no subscription adapter, credential import, login command, or routing. Written Anthropic permission is required before that changes. Direct Anthropic API billing is a separate path.</p></article>
+          <article class="provider-card future-card reveal delay-1"><header><span>CATALOGED // UNBENCHMARKED</span><h3>GPT-5.6-LUNA</h3></header><p>The exact direct-OpenAI model id is filtered in the account catalog. Corti latency, cleanup quality, cancellation waste, and Codex availability are unavailable, so it is not an automatic-live default.</p></article>
+        </div>
+
+        <div class="vertex-figures">
+          <figure class="live-note-shot reveal">
+            <a href="/assets/going-live-corti/vertex-warning.webp" aria-label="Open the full mocked Vertex unarmed screenshot"><img loading="lazy" decoding="async" src="/assets/going-live-corti/vertex-warning.webp" width="900" height="1003" alt="Mocked Google Vertex provider card in an unarmed state with the warning gcloud token isn't armed"></a>
+            <figcaption><strong>MOCKED UI // UNARMED.</strong> Synthetic ADC and project state. The warning text and recovery presentation are implemented; no Google credential or request was used.</figcaption>
+          </figure>
+          <figure class="live-note-shot reveal delay-1">
+            <a href="/assets/going-live-corti/vertex-recovery.webp" aria-label="Open the full mocked Vertex recovery screenshot"><img loading="lazy" decoding="async" src="/assets/going-live-corti/vertex-recovery.webp" width="900" height="964" alt="Mocked Google Vertex provider card showing an armed token-only recovery state and a synthetic catalog result"></a>
+            <figcaption><strong>MOCKED UI // RECOVERY.</strong> “Armed” proves only a synthetic in-memory token state here; project, IAM, billing, quota, region, model access, and production readiness are not claimed.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section section-shell assistant-section" aria-labelledby="assistant-title">
+      <div class="assistant-copy reveal">
+        <p class="section-index">IMPLEMENTED // SESSION-ONLY QUESTIONS</p>
+        <h2 id="assistant-title">AN ASSISTANT<br>WITH A FENCE.</h2>
+        <p>The pinned question can rerun only after an explicit repeated-cost acknowledgement. Ad-hoc questions remain a bounded visible queue. Every answer is tied to a transcript revision, and question/answer bodies never enter Vagus, durable telemetry, logs, or provenance.</p>
+        <p>On narrow windows the same surface becomes a keyboard-operable drawer with focus trap, Escape and backdrop close, unread state, and focus restoration.</p>
+      </div>
+      <figure class="live-note-shot reveal delay-1">
+        <a href="/assets/going-live-corti/assistant-pinned-desktop.webp" aria-label="Open the full mocked Corti assistant screenshot">
+          <picture>
+            <source media="(max-width: 700px)" srcset="/assets/going-live-corti/assistant-drawer.webp" width="720" height="1507">
+            <img loading="lazy" decoding="async" src="/assets/going-live-corti/assistant-pinned-desktop.webp" width="1800" height="1200" alt="Mocked Corti live transcript with a pinned question and session-only assistant beside synthetic transcript rows">
+          </picture>
+        </a>
+        <figcaption><strong>MOCKED UI SCREENSHOT.</strong> The conversation, answer, run count, tokens, cache result, and price are deterministic fixture values. They are not personal data, provider output, or measured usage.</figcaption>
+      </figure>
+    </section>
+
+    <section class="measurements-section" id="measurements" aria-labelledby="measurements-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">MEASURED // PINNED VERIFICATION RECEIPT</p><h2 id="measurements-title">THE NUMBERS<br>WE ACTUALLY HAVE.</h2></div>
+        <p class="long-lede reveal">Measurements compare feature baseline <a href="https://github.com/vasovagal/corti/commit/cc6f75ae42aa3e5640efced4366f97e54d0432dc"><code>cc6f75a</code></a> with the verified implementation snapshot. Logical bytes are not filesystem allocation. The complete command ledger and hashes live in the <a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/going-live-metrics.md">pinned metrics report</a>.</p>
+
+        <div class="headline-measures reveal" aria-label="Headline measured results">
+          <div><span>CANONICAL TEST SET</span><b>454</b><small>passing · no double-counted reruns</small></div>
+          <div><span>TRACKED DELTA</span><b>+1,228,418 B</b><small>logical bytes before metrics report</small></div>
+          <div><span>SIGNED EXECUTABLE</span><b>+3.6404%</b><small>versus official v0.13.0</small></div>
+          <div class="failed-measure"><span>CURRENT DMG</span><b>UNAVAILABLE</b><small>required gate is red</small></div>
+        </div>
+
+        <div class="live-table-wrap reveal" role="region" aria-label="Measured source and dependency deltas" tabindex="0">
+          <table class="live-metrics-table">
+            <caption>Measured source and dependency deltas</caption>
+            <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">Verified snapshot</th><th scope="col">Delta</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">All tracked files / logical bytes</th><td>251 / 2,327,659 B</td><td>297 / 3,556,077 B</td><td>+46 / +1,228,418 B (+52.7748%)</td></tr>
+              <tr><th scope="row">Code files / logical bytes</th><td>105 / 1,173,891 B</td><td>147 / 2,316,291 B</td><td>+42 / +1,142,400 B (+97.3174%)</td></tr>
+              <tr><th scope="row">Workspace members</th><td>14</td><td>16</td><td>+2</td></tr>
+              <tr><th scope="row">Workspace dependency entries</th><td>23</td><td>32</td><td>+9</td></tr>
+              <tr><th scope="row">Cargo.lock package records</th><td>693</td><td>697</td><td>+4</td></tr>
+              <tr><th scope="row">npm lockfiles</th><td>unchanged</td><td>unchanged</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="measurement-grid">
+          <article class="measurement-card reveal"><span class="truth-chip measured">MEASURED // TESTS</span><h3>454 PASSING.</h3><p><strong>376 Rust + 61 Vitest + 17 Playwright.</strong> The canonical set uses one capture run and does not count repeated screenshots or backend-configuration reruns twice. Five Rust tests were ignored because external ASR, VAD, diarization, and speech fixtures were unavailable.</p></article>
+          <article class="measurement-card reveal delay-1"><span class="truth-chip measured">MEASURED // CAPTURES</span><h3>TWO IDENTICAL RUNS.</h3><p>Each deterministic Playwright run passed 17 cases and produced 19 PNGs. Both fresh manifests were byte-identical. The reviewed source set totals 6,139,199 logical bytes and contains synthetic content only.</p></article>
+          <article class="measurement-card reveal"><span class="truth-chip measured">MEASURED // APP</span><h3>+1,571,632 B.</h3><p>The signed bundle executable grew from 43,171,632 B to 44,743,264 B. The release-style app zip grew from 17,219,479 B to 17,933,511 B: +714,032 B (+4.1467%).</p></article>
+          <article class="measurement-card reveal delay-1"><span class="truth-chip measured">MEASURED // FRONTEND</span><h3>406,893 B.</h3><p>The production frontend output was 424 B HTML, 40,450 B CSS, and 366,019 B JavaScript. The UI lockfile was unchanged by this feature.</p></article>
+        </div>
+
+        <div class="live-table-wrap reveal" role="region" aria-label="Selected measured verification times" tabindex="0">
+          <table class="live-metrics-table time-table">
+            <caption>Selected measured wall times</caption>
+            <thead><tr><th scope="col">Operation</th><th scope="col">Measured result</th><th scope="col">Wall time</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Final locked/offline Rust workspace suite</th><td>376 passed · 5 ignored</td><td>53.73 s</td></tr>
+              <tr><th scope="row">Frontend Vitest suite</th><td>61 passed</td><td>1.28 s</td></tr>
+              <tr><th scope="row">Frontend production build</th><td>60 modules · 406,893 B output</td><td>2.24 s</td></tr>
+              <tr><th scope="row">Deterministic Playwright capture</th><td>17 passed per fresh run</td><td>10.12 s / 9.84 s</td></tr>
+              <tr><th scope="row">Optimized Cargo release phase</th><td>signed app produced</td><td>264 s</td></tr>
+              <tr><th scope="row">First full Tauri app + DMG command</th><td>app pass · DMG fail</td><td>408.97 s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="token-ledger reveal" aria-labelledby="token-title">
+          <div><span class="truth-chip measured">RUNTIME-REPORTED TOKENS</span><h3 id="token-title">TWO LEDGERS.<br>DO NOT ADD THEM.</h3></div>
+          <div><p>The original workflow ledger reports <strong>260,187,373</strong> tokens through Hardening, including a prior workflow's <strong>21,805,203</strong>. A separately supplied, overlapping continuation ledger reports <strong>247,146,176</strong> tokens at the Delivery cutoff, including <strong>8,764,006</strong> for Verification. They are different accounting views, not additive totals.</p><p><strong>Website-delivery phase tokens: unavailable.</strong> No runtime value was exposed. <strong>Provider request tokens: unavailable.</strong> No paid-model request was made.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page-section section-shell gate-section" aria-labelledby="gates-title">
+      <div class="section-heading-row reveal"><p class="section-index">DELIVERY POSTURE</p><h2 id="gates-title">GREEN IS NOT<br>THE SAME AS SHIPPED.</h2></div>
+      <div class="gate-ledger">
+        <article class="gate-pass reveal"><span>PASS</span><h3>SOURCE + TESTS</h3><p>Formatting, default/all-feature clippy lanes, independent AWS/local lanes, the locked/offline workspace, frontend checks, and deterministic captures passed in the recorded verification.</p></article>
+        <article class="gate-pass reveal delay-1"><span>PASS</span><h3>TIP CI</h3><p><a href="https://github.com/vasovagal/corti/actions/runs/32486031452">GitHub Actions on <code>8891173</code></a> is green across frontend, format, clippy, tests, and independent backend lanes on Rust 1.98.</p></article>
+        <article class="gate-pass reveal"><span>PASS</span><h3>SIGNED APP</h3><p>The ad-hoc-signed app passed the release verification script and strict deep <code>codesign</code> verification.</p></article>
+        <article class="gate-fail reveal delay-1"><span>FAIL × 2</span><h3>CANONICAL DMG</h3><p>Finder's styling AppleScript timed out with <code>-1712</code> twice. Current DMG bytes and a publishable release pair are unavailable.</p></article>
+      </div>
+      <p class="no-call-receipt reveal"><strong>NETWORK RECEIPT:</strong> provider and AWS ambient credentials were removed or disabled for verification. Provider tests used injected transports and synthetic fixtures; browser captures blocked every non-loopback request. No paid-model request or ambient credential lookup occurred.</p>
+    </section>
+
+    <section class="future-section" aria-labelledby="future-title">
+      <div class="section-shell">
+        <div class="section-heading-row reveal"><p class="section-index">FUTURE / EXPERIMENTAL / BLOCKED</p><h2 id="future-title">WHAT THIS PAGE<br>DOES NOT PROMISE.</h2></div>
+        <ol class="future-ledger">
+          <li class="reveal"><span>01 // BLOCKED GATE</span><div><h3>NO RELEASE UNTIL THE DMG PASSES.</h3><p>Rerun the exact canonical bundle command successfully, then update the measured artifact receipt. Until then the PR remains draft.</p></div></li>
+          <li class="reveal"><span>02 // FUTURE MEASUREMENT</span><div><h3>NO REAL-PROVIDER QUALITY OR LATENCY CLAIM.</h3><p>Approved account, project, region, retention, catalog, tariff, model-quality, time-to-first-text, and cancellation-waste checks remain future work. Production dollar estimates are unavailable because the app currently supplies no reviewed pricing catalog.</p></div></li>
+          <li class="reveal"><span>03 // GATED PROVIDERS</span><div><h3>VERTEX IS UNARMED. CODEX IS EXPERIMENTAL.</h3><p>Vertex still needs production ADC/catalog wiring. Codex still needs production and non-coding approval. Claude subscription routing remains blocked without written Anthropic permission.</p></div></li>
+          <li class="reveal"><span>04 // FUTURE STORE SHAPE</span><div><h3>THE DESIGN IS LARGER THAN THE LANDED STORE.</h3><p>The branch implements a bounded atomic AES-256-GCM exact cache/final journal. The design's longer-term SQLite TTL, LRU, purge, rotation, and broader recovery shape is not claimed as complete.</p></div></li>
+          <li class="reveal"><span>05 // KNOWN FOLLOW-UP</span><div><h3>EXTERNAL FIXTURES AND AUDIT DEBT REMAIN.</h3><p>Five model-dependent Rust tests remain ignored because their real fixtures were unavailable. The unchanged UI lockfile also reported two pre-existing high-severity audit findings; audit is not a configured gate.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="page-section section-shell receipts live-receipts" id="receipts" aria-labelledby="receipts-title">
+      <div class="section-heading-row reveal"><p class="section-index">PINNED EVIDENCE</p><h2 id="receipts-title">DON'T TRUST<br>THE ANNOUNCEMENT.</h2></div>
+      <ol class="source-ledger reveal">
+        <li><span>C01</span><div><a href="https://github.com/vasovagal/corti/pull/113">Draft PR #113 — optional hosted transcript post-processing ↗</a><small>current review and gate state</small></div></li>
+        <li><span>C02</span><div><a href="https://github.com/vasovagal/corti/issues/112">Issue #112 — requirements and acceptance criteria ↗</a><small>tracking contract</small></div></li>
+        <li><span>C03</span><div><a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/going-live-metrics.md">Going LIVE verification and metrics ↗</a><small>pinned measurements · c7f3081</small></div></li>
+        <li><span>C04</span><div><a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/07-paid-model-post-processing.md">Hosted post-processing design ↗</a><small>normative architecture and external gates · pinned</small></div></li>
+        <li><span>C05</span><div><a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/adr/0015-hosted-post-processing.md">ADR 0015 — raw and Vagus boundaries ↗</a><small>accepted decision · pinned</small></div></li>
+        <li><span>C06</span><div><a href="https://github.com/vasovagal/corti/actions/runs/32486031452">GitHub Actions verification on branch tip ↗</a><small>green CI · 8891173</small></div></li>
+      </ol>
+      <p class="receipt-note">Publication snapshot: 2026-08-21. Branch <code>feat/live-post-processing</code> at <code>8891173f13d450e4842984788c1851abb80ce7c6</code>. PR and issue state may change after this field note; the pinned code and metrics links do not.</p>
+    </section>
+
+    <section class="page-next"><p>Ready for the stable, released Corti story?</p><a href="/corti/">back to 02 // Corti →</a></section>
+  </main>
+
+  <footer class="site-footer"><p><strong>vasovagal</strong> // Corti field note</p><div><a href="/">home</a><a href="/corti/">corti</a><a href="#measurements">measurements</a><a href="#receipts">receipts</a></div><p>raw first // claim less // verify more // <span id="year">2026</span></p></footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>
