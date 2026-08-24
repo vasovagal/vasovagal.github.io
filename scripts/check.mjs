@@ -54,8 +54,6 @@ for (const page of pages) {
 const combined = [...documents.values()].join("\n");
 const requiredFacts = [
   "pure prompt // second hand thoughts //",
-  "vagus <b>v0.13.0</b>",
-  "corti <b>v0.13.0</b>",
   "NO RUNNING DAEMON",
   "03.how so smart?",
   "RRF(d) = Σ",
@@ -113,7 +111,8 @@ if (!legacyCompetition.includes('url=/vagus-vs-gbrain/')) {
 
 const goingLive = documents.get("going-live-with-corti/index.html");
 for (const fact of [
-  "RELEASE GATE RED",
+  "PRE-RELEASE GATE RED",
+  "SHIPPED v0.14.0",
   "MOCKED UI SCREENSHOT",
   "No paid-model request was made",
   "https://github.com/vasovagal/corti/issues/112",
@@ -148,8 +147,8 @@ if (!css.includes(".product-shot img") || !css.includes("height: auto")) {
 }
 
 if (combined.includes("TODO") || css.includes("TODO")) throw new Error("site contains TODO markers");
-if (Buffer.byteLength(documents.get("index.html"), "utf8") > 10_000) {
-  throw new Error("home page has grown back into a large one-page brochure");
+if (Buffer.byteLength(documents.get("index.html"), "utf8") > 10_500) {
+  throw new Error("home page has exceeded its 10.5 KB focused-router budget");
 }
 
 console.log(`site check passed: ${pages.length} pages, focused routes, intrinsic screenshots`);

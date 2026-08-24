@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Going LIVE with Corti // implementation field note</title>
-  <meta name="description" content="A measured implementation field note for Corti's optional hosted transcript cleanup, final rewrite, live assistant, provider boundaries, and still-red release gate.">
+  <meta name="description" content="A measured pre-release field note for Corti's hosted transcript cleanup, final rewrite, live assistant, provider boundaries, and the later v0.14.0 release.">
   <meta name="theme-color" content="#020805">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://vasovagal.github.io/going-live-with-corti/">
   <meta property="og:title" content="Going LIVE with Corti">
-  <meta property="og:description" content="Raw first. Optional hosted text second. The implementation, measurements, mocked UI, provider truth, and the release gate that is still red.">
+  <meta property="og:description" content="Raw first. Optional hosted text second. The preserved pre-release measurements and the v0.14.0 release update.">
   <meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://vasovagal.github.io/going-live-with-corti/">
@@ -25,7 +25,7 @@
   <header class="site-header">
     <a class="wordmark" href="/" aria-label="vasovagal home"><span aria-hidden="true">[</span><strong>vasovagal</strong><span class="cursor" aria-hidden="true">_</span><span aria-hidden="true">]</span></a>
     <nav aria-label="Primary navigation"><a href="/vagus/">01.vagus</a><a class="active" href="/corti/">02.corti</a><a href="/smart/">03.how so smart?</a><a href="/rag/">04.rag</a><a href="/install/">05.install</a></nav>
-    <a class="github-link" href="https://github.com/vasovagal/corti/pull/113">draft pr #113↗</a>
+    <a class="github-link" href="https://github.com/vasovagal/corti/releases/tag/v0.14.0">release v0.14.0↗</a>
   </header>
 
   <main id="main">
@@ -33,17 +33,17 @@
       <div class="page-hero-copy reveal">
         <p class="section-index">07 // CORTI IMPLEMENTATION FIELD NOTE // <time datetime="2026-08-21">2026.08.21</time></p>
         <h1 id="page-title">GOING <span>LIVE</span><br>WITH CORTI.</h1>
-        <p><strong>Raw first. Optional hosted text second.</strong> Corti now has a branch that can clean finalized transcript rows, run a stronger final rewrite, and keep a bounded live assistant beside the call. This is an implementation report—not a release announcement.</p>
-        <div class="page-actions"><a class="button primary" href="https://github.com/vasovagal/corti/pull/113">inspect draft PR #113 ↗</a><a class="button ghost" href="https://github.com/vasovagal/corti/issues/112">read issue #112 ↗</a></div>
+        <p><strong>Raw first. Optional hosted text second.</strong> This field note preserves the measured pre-release snapshot of Corti's transcript cleanup, final rewrite, and bounded live assistant. The implementation later shipped in v0.14.0.</p>
+        <div class="page-actions"><a class="button primary" href="https://github.com/vasovagal/corti/releases/tag/v0.14.0">open release v0.14.0 ↗</a><a class="button ghost" href="https://github.com/vasovagal/corti/pull/113">inspect merged PR #113 ↗</a></div>
       </div>
       <aside class="page-readout live-gate-readout reveal delay-1" aria-label="Current implementation and release status">
-        <span>BRANCH TIP</span><b>8891173</b><small>implemented · pushed</small>
-        <hr><span>SOURCE + CI</span><b class="status-pass">GREEN</b><small>tip checks passed</small>
-        <hr><span>RELEASE GATE</span><b class="status-stop">RED</b><small>DMG unavailable · PR remains draft</small>
+        <span>RELEASE</span><b>v0.14.0</b><small>published 2026-08-24</small>
+        <hr><span>SOURCE + CI</span><b class="status-pass">GREEN</b><small>release checks passed</small>
+        <hr><span>RELEASE GATE</span><b class="status-pass">GREEN</b><small>DMG verified · PR merged</small>
       </aside>
     </section>
 
-    <div class="signal-rail live-note-rail" aria-hidden="true"><span>RAW FIRST</span><i>◆</i><span>TEXT ONLY</span><i>◆</i><span>DEFAULT OFF</span><i>◆</i><span>NO PAID CALLS</span><i>◆</i><span>DRAFT PR</span></div>
+    <div class="signal-rail live-note-rail" aria-hidden="true"><span>RAW FIRST</span><i>◆</i><span>TEXT ONLY</span><i>◆</i><span>DEFAULT OFF</span><i>◆</i><span>NO PAID CALLS IN SNAPSHOT</span><i>◆</i><span>SHIPPED v0.14.0</span></div>
 
     <section class="page-section section-shell truth-section" aria-labelledby="truth-title">
       <div class="section-heading-row reveal"><p class="section-index">READ THE LABELS BEFORE THE SCREENSHOTS</p><h2 id="truth-title">WHAT KIND<br>OF TRUE?</h2></div>
@@ -54,8 +54,8 @@
         <li><span class="truth-chip future">FUTURE / GATED</span><p>Designed or partially wired, but not a production availability claim.</p></li>
       </ul>
       <article class="release-blocker reveal" aria-labelledby="blocker-title">
-        <div><span class="truth-chip blocked">RELEASE GATE RED</span><h3 id="blocker-title">THE APP BUILT.<br>THE DMG DID NOT.</h3></div>
-        <p>The canonical Tauri bundle command produced a signed app that passed strict verification, then Finder's styling AppleScript timed out with <code>-1712</code>. The exact DMG gate failed twice. No current DMG size is inferred, no new release is claimed, and <a href="https://github.com/vasovagal/corti/pull/113">PR #113</a> remains a draft even though source checks and GitHub CI are green.</p>
+        <div><span class="truth-chip blocked">PRE-RELEASE GATE RED</span><h3 id="blocker-title">THE APP BUILT.<br>THE DMG DID NOT.</h3></div>
+        <p>At the 2026-08-21 snapshot, the canonical Tauri bundle command produced a signed app that passed strict verification, then Finder's styling AppleScript timed out with <code>-1712</code>. The exact DMG gate failed twice, so this report inferred no DMG size and claimed no release. The later <a href="https://github.com/vasovagal/corti/releases/tag/v0.14.0">v0.14.0 release workflow</a> built and verified the DMG successfully.</p>
       </article>
     </section>
 
@@ -169,7 +169,7 @@
           <div><span>CANONICAL TEST SET</span><b>454</b><small>passing · no double-counted reruns</small></div>
           <div><span>TRACKED DELTA</span><b>+1,228,418 B</b><small>logical bytes before metrics report</small></div>
           <div><span>SIGNED EXECUTABLE</span><b>+3.6404%</b><small>versus official v0.13.0</small></div>
-          <div class="failed-measure"><span>CURRENT DMG</span><b>UNAVAILABLE</b><small>required gate is red</small></div>
+          <div class="failed-measure"><span>SNAPSHOT DMG</span><b>UNAVAILABLE</b><small>pre-release gate was red</small></div>
         </div>
 
         <div class="live-table-wrap reveal" role="region" aria-label="Measured source and dependency deltas" tabindex="0">
@@ -222,7 +222,7 @@
         <article class="gate-pass reveal"><span>PASS</span><h3>SOURCE + TESTS</h3><p>Formatting, default/all-feature clippy lanes, independent AWS/local lanes, the locked/offline workspace, frontend checks, and deterministic captures passed in the recorded verification.</p></article>
         <article class="gate-pass reveal delay-1"><span>PASS</span><h3>TIP CI</h3><p><a href="https://github.com/vasovagal/corti/actions/runs/32486031452">GitHub Actions on <code>8891173</code></a> is green across frontend, format, clippy, tests, and independent backend lanes on Rust 1.98.</p></article>
         <article class="gate-pass reveal"><span>PASS</span><h3>SIGNED APP</h3><p>The ad-hoc-signed app passed the release verification script and strict deep <code>codesign</code> verification.</p></article>
-        <article class="gate-fail reveal delay-1"><span>FAIL × 2</span><h3>CANONICAL DMG</h3><p>Finder's styling AppleScript timed out with <code>-1712</code> twice. Current DMG bytes and a publishable release pair are unavailable.</p></article>
+        <article class="gate-fail reveal delay-1"><span>SNAPSHOT FAIL × 2</span><h3>CANONICAL DMG</h3><p>Finder's styling AppleScript timed out with <code>-1712</code> twice in this verification snapshot. The independent v0.14.0 release run later passed the canonical DMG gate.</p></article>
       </div>
       <p class="no-call-receipt reveal"><strong>NETWORK RECEIPT:</strong> provider and AWS ambient credentials were removed or disabled for verification. Provider tests used injected transports and synthetic fixtures; browser captures blocked every non-loopback request. No paid-model request or ambient credential lookup occurred.</p>
     </section>
@@ -231,7 +231,7 @@
       <div class="section-shell">
         <div class="section-heading-row reveal"><p class="section-index">FUTURE / EXPERIMENTAL / BLOCKED</p><h2 id="future-title">WHAT THIS PAGE<br>DOES NOT PROMISE.</h2></div>
         <ol class="future-ledger">
-          <li class="reveal"><span>01 // BLOCKED GATE</span><div><h3>NO RELEASE UNTIL THE DMG PASSES.</h3><p>Rerun the exact canonical bundle command successfully, then update the measured artifact receipt. Until then the PR remains draft.</p></div></li>
+          <li class="reveal"><span>01 // CLEARED AFTER SNAPSHOT</span><div><h3>THE DMG GATE PASSED FOR v0.14.0.</h3><p>The release workflow reran the canonical build successfully, verified the app bundle and exact two-asset contract, and published v0.14.0 after PR #113 merged.</p></div></li>
           <li class="reveal"><span>02 // FUTURE MEASUREMENT</span><div><h3>NO REAL-PROVIDER QUALITY OR LATENCY CLAIM.</h3><p>Approved account, project, region, retention, catalog, tariff, model-quality, time-to-first-text, and cancellation-waste checks remain future work. Production dollar estimates are unavailable because the app currently supplies no reviewed pricing catalog.</p></div></li>
           <li class="reveal"><span>03 // GATED PROVIDERS</span><div><h3>VERTEX IS UNARMED. CODEX IS EXPERIMENTAL.</h3><p>Vertex still needs production ADC/catalog wiring. Codex still needs production and non-coding approval. Claude subscription routing remains blocked without written Anthropic permission.</p></div></li>
           <li class="reveal"><span>04 // FUTURE STORE SHAPE</span><div><h3>THE DESIGN IS LARGER THAN THE LANDED STORE.</h3><p>The branch implements a bounded atomic AES-256-GCM exact cache/final journal. The design's longer-term SQLite TTL, LRU, purge, rotation, and broader recovery shape is not claimed as complete.</p></div></li>
@@ -243,14 +243,14 @@
     <section class="page-section section-shell receipts live-receipts" id="receipts" aria-labelledby="receipts-title">
       <div class="section-heading-row reveal"><p class="section-index">PINNED EVIDENCE</p><h2 id="receipts-title">DON'T TRUST<br>THE ANNOUNCEMENT.</h2></div>
       <ol class="source-ledger reveal">
-        <li><span>C01</span><div><a href="https://github.com/vasovagal/corti/pull/113">Draft PR #113 — optional hosted transcript post-processing ↗</a><small>current review and gate state</small></div></li>
+        <li><span>C01</span><div><a href="https://github.com/vasovagal/corti/pull/113">Merged PR #113 — optional hosted transcript post-processing ↗</a><small>implementation history</small></div></li>
         <li><span>C02</span><div><a href="https://github.com/vasovagal/corti/issues/112">Issue #112 — requirements and acceptance criteria ↗</a><small>tracking contract</small></div></li>
         <li><span>C03</span><div><a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/going-live-metrics.md">Going LIVE verification and metrics ↗</a><small>pinned measurements · c7f3081</small></div></li>
         <li><span>C04</span><div><a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/07-paid-model-post-processing.md">Hosted post-processing design ↗</a><small>normative architecture and external gates · pinned</small></div></li>
         <li><span>C05</span><div><a href="https://github.com/vasovagal/corti/blob/c7f308145e323999a171ab4c698c7679b680ca7b/design/adr/0015-hosted-post-processing.md">ADR 0015 — raw and Vagus boundaries ↗</a><small>accepted decision · pinned</small></div></li>
         <li><span>C06</span><div><a href="https://github.com/vasovagal/corti/actions/runs/32486031452">GitHub Actions verification on branch tip ↗</a><small>green CI · 8891173</small></div></li>
       </ol>
-      <p class="receipt-note">Publication snapshot: 2026-08-21. Branch <code>feat/live-post-processing</code> at <code>8891173f13d450e4842984788c1851abb80ce7c6</code>. PR and issue state may change after this field note; the pinned code and metrics links do not.</p>
+      <p class="receipt-note">Publication snapshot: 2026-08-21. Branch <code>feat/live-post-processing</code> at <code>8891173f13d450e4842984788c1851abb80ce7c6</code>. Release update: <a href="https://github.com/vasovagal/corti/releases/tag/v0.14.0">v0.14.0 published 2026-08-24</a>. The pinned code and pre-release metrics links remain historical receipts.</p>
     </section>
 
     <section class="page-next"><p>Ready for the stable, released Corti story?</p><a href="/corti/">back to 02 // Corti →</a></section>

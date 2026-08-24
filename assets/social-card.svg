@@ -18,7 +18,7 @@
     <text x="58" y="232" fill="#d9f8df" font-size="72" font-weight="800" letter-spacing="-5">YOUR SECOND BRAIN</text>
     <text x="58" y="316" fill="none" stroke="#57ff82" stroke-width="1.5" font-size="72" font-weight="800" letter-spacing="-5">HAS A SPINAL CORD.</text>
     <text x="62" y="384" fill="#7da388" font-size="22">plain Markdown · local RAG · automatic meeting memory</text>
-    <text x="62" y="526" fill="#57ff82" font-size="17" letter-spacing="3">VAGUS v0.13.0  //  CORTI v0.13.0</text>
+    <text x="62" y="526" fill="#57ff82" font-size="17" letter-spacing="3">VAGUS // CORTI // LOCAL-FIRST</text>
   </g>
   <g transform="translate(991 106)" fill="none" stroke="#57ff82">
     <path d="M0 0v410" stroke-width="3" opacity=".7"/>
