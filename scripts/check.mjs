@@ -58,7 +58,7 @@ const requiredFacts = [
   "03.how so smart?",
   "RRF(d) = Σ",
   "1,075.8 ms",
-  "SOTA harness",
+  "host agent may send returned text",
   "Codex CLI",
   "vagus file \"$note\" --suggest --json",
   "vagus reindex --since=7d",
@@ -74,18 +74,18 @@ for (const fact of requiredFacts) {
 
 const fieldReports = new Map([
   ["vagus-vs-gbrain/index.html", [
-    "OUR SO-CALLED COMPETITION",
+    "HISTORICAL COMPARISON // AUGUST 2026",
     "Compared from pinned repository snapshots",
     "188 PACKAGES",
     "Every one was already present in the untouched Bun base image",
     "TRIVY 0.74.0",
-    "YEAR FIVE IS",
+    "MAINTAIN RUNTIMES",
     "260c23a1c0457bdc8839fe0050ee7c3e865a2e35",
     "b99f4c8b07780d2469608b03c7c301bd2beef271",
   ]],
   ["vagus-vs-qmd/index.html", [
-    "THE UNCOMFORTABLY",
-    "THIS ONE IS",
+    "VAGUS<br><span>AND QMD.",
+    "NO QUALITY WINNER",
     "154 PACKAGES",
     "THE BUN-ONLY CONTAINER DID NOT INSTALL",
     "Vagus <strong>--smart</strong> uses",

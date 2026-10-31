@@ -7,7 +7,7 @@
   <meta name="description" content="Install Vagus and Corti from the shared vasovagal Homebrew tap.">
   <meta name="theme-color" content="#020805">
   <meta property="og:type" content="website"><meta property="og:url" content="https://vasovagal.github.io/install/">
-  <meta property="og:title" content="Tap in // install Vagus and Corti"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
+  <meta property="og:title" content="Install Vagus and Corti"><meta property="og:image" content="https://vasovagal.github.io/assets/social-card.png">
   <link rel="canonical" href="https://vasovagal.github.io/install/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.classList.replace("no-js", "js");</script>
@@ -22,12 +22,12 @@
 
   <main id="main">
     <section class="page-hero section-shell install-page-hero" aria-labelledby="page-title">
-      <div class="page-hero-copy reveal"><p class="section-index">05 // GRAFT PROCEDURE</p><h1 id="page-title">TAP IN.<br>KEEP YOUR BRAIN.</h1><p>Both projects ship through the shared <a href="https://github.com/vasovagal/homebrew-tap">vasovagal/tap</a>. One tap, one CLI, one menu-bar app.</p></div>
+      <div class="page-hero-copy reveal"><p class="section-index">05 // INSTALLATION</p><h1 id="page-title">INSTALL VAGUS.<br>ADD CORTI.</h1><p>Install the Vagus CLI and Corti menu-bar app from <a href="https://github.com/vasovagal/homebrew-tap">vasovagal/tap</a>, then set up models, agent skills, and audio permissions below.</p></div>
       <aside class="page-readout reveal delay-1"><span>VAGUS</span><b data-release-version="vagus">0.14.1</b><small>formula</small><hr><span>CORTI</span><b data-release-version="corti">0.17.0</b><small>cask</small><hr><span>HOST</span><b>APPLE SILICON</b><small>full pair</small></aside>
     </section>
 
     <section class="page-section section-shell install-focus" aria-labelledby="bootstrap-title">
-      <div class="install-copy reveal"><p class="section-index">BOOTSTRAP</p><h2 id="bootstrap-title">MEMORY + EAR.<br>FIVE COMMANDS.</h2><p>The tap points at published GitHub release artifacts and pins their checksums. Vagus also ships Linux arm64 and x86_64 builds; Corti requires Apple Silicon and macOS 15 or newer.</p></div>
+      <div class="install-copy reveal"><p class="section-index">BOOTSTRAP</p><h2 id="bootstrap-title">INSTALL THE PAIR.<br>CREATE A VAULT.</h2><p>On an Apple Silicon Mac with macOS 15+, Homebrew, and iCloud Drive enabled, run the commands below. The tap uses published release artifacts with pinned checksums. Vagus also ships Linux arm64 and x86_64 builds.</p><p class="microcopy">For a local-only vault, use <code>vagus init</code> instead of the final command. If <code>~/brain</code> already contains notes, iCloud setup stops without moving them; follow the <a href="https://github.com/vasovagal/vagus/blob/v0.14.1/README.md#setup">manual migration steps</a>. Run the trust command only on Homebrew 6 or newer.</p></div>
       <div class="install-terminal reveal delay-1" data-copy-group>
         <div class="terminal-bar"><span></span><span></span><span></span><b>bootstrap.sh</b><i>arm64 macOS</i></div>
         <pre><code><span class="dim"># connect the tap</span>
@@ -47,11 +47,11 @@
     </section>
 
     <section class="page-section section-shell post-install" aria-labelledby="next-title">
-      <div class="section-heading-row reveal"><p class="section-index">AFTER THE GRAFT</p><h2 id="next-title">THREE QUICK CHECKS.</h2></div>
+      <div class="section-heading-row reveal"><p class="section-index">FINISH SETUP</p><h2 id="next-title">MODELS, SKILLS,<br>AND PERMISSIONS.</h2></div>
       <div class="feature-grid">
-        <article class="wire-panel reveal"><span class="panel-number">01</span><h3>CHECK THE CACHE.</h3><p><code>vagus doctor</code> verifies the vault, local index separation, model presence, and vector identity without downloading anything.</p></article>
-        <article class="wire-panel reveal delay-1"><span class="panel-number">02</span><h3>CONNECT A HARNESS.</h3><p>Install bundled skills into Claude Code or pi. Codex CLI and other shell-capable SOTA harnesses can drive the same stable <code>vagus … --json</code> contract.</p></article>
-        <article class="wire-panel reveal delay-2"><span class="panel-number">03</span><h3>GRANT THE EAR.</h3><p>Launch Corti once and grant macOS Microphone and System Audio Recording permissions. Then join a call.</p></article>
+        <article class="wire-panel reveal"><span class="panel-number">01</span><h3>CHECK THE MODELS.</h3><p><code>vagus doctor</code> checks vault and index paths, model-file presence, and embedding identity without downloading. To download and validate the embedder and reranker explicitly, run <code>vagus doctor --fetch-models</code>. First indexing or search can also download needed models.</p></article>
+        <article class="wire-panel reveal delay-1"><span class="panel-number">02</span><h3>INSTALL AGENT SKILLS.</h3><p>Run <code>vagus skills install</code> for Claude Code or <code>vagus skills install --agent pi</code> for pi. Reinstall after Vagus upgrades; use <code>/reload</code> in an existing pi session. Codex CLI can call Vagus through the shell. The host agent may send retrieved note text to its model provider.</p></article>
+        <article class="wire-panel reveal delay-2"><span class="panel-number">03</span><h3>SET UP CORTI.</h3><p>Launch Corti and grant Microphone and System Audio Recording permissions. In Settings, select and download local models, then use the idle microphone test before joining a call. AWS transcription and hosted text features require separate configuration; see <a href="/corti/#settings-title">processing choices</a>.</p></article>
       </div>
     </section>
   </main>
