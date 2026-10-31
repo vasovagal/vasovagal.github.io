@@ -25,7 +25,7 @@
       <div class="page-hero-copy reveal">
         <p class="section-index">01 // AFFERENT NERVE</p>
         <h1 id="page-title">VAGUS<span class="cursor">_</span></h1>
-        <p>One fast binary for capture, PARA, and hybrid recall over a folder you already own.</p>
+        <p>Capture, organize, and search plain-Markdown notes with a command-line tool. Vagus combines keyword and semantic search over your local vault.</p>
         <div class="page-actions"><a class="button primary" data-release-install="vagus" href="/install/">install v0.14.1 →</a><a class="button ghost" href="https://github.com/vasovagal/vagus">github ↗</a></div>
       </div>
       <aside class="page-readout reveal delay-1" aria-label="Vagus release and architecture summary">
@@ -38,9 +38,9 @@
     <section class="page-section section-shell" aria-labelledby="vagus-core-title">
       <div class="section-heading-row reveal"><p class="section-index">CORE REFLEXES</p><h2 id="vagus-core-title">FILES FIRST.<br>INDEX SECOND.</h2></div>
       <div class="feature-grid vagus-grid">
-        <article class="wire-panel reveal"><span class="panel-number">0x01</span><h3>NO RUNNING DAEMON.</h3><p>Vagus starts, loads local indexes and models, returns evidence, and exits. No background watcher, hosted account, or cloud round trip.</p><div class="panel-signal"><span></span>resident services: <b>0</b></div></article>
+        <article class="wire-panel reveal"><span class="panel-number">0x01</span><h3>NO RUNNING DAEMON.</h3><p>The CLI runs on demand and exits when the command finishes. Search uses local indexes and models after their initial download; no background watcher or hosted search service is required.</p><div class="panel-signal"><span></span>resident services: <b>0</b></div></article>
         <article class="wire-panel reveal delay-1"><span class="panel-number">0x02</span><h3>PLAIN PARA.</h3><p><code>00-Inbox / 10-Projects / 20-Areas / 30-Resources / 40-Archive</code>. Edit with Vim, Obsidian, Finder, or anything that reads text.</p><div class="panel-signal"><span></span>source format: <b>.md</b></div></article>
-        <article class="wire-panel reveal delay-2"><span class="panel-number">0x03</span><h3>WORDS + MEANING.</h3><p>Tantivy BM25 catches identifiers. EmbeddingGemma catches paraphrases. Reciprocal Rank Fusion preserves both retrieval paths.</p><div class="panel-signal"><span></span>fusion: <b>RRF k=60</b></div></article>
+        <article class="wire-panel reveal delay-2"><span class="panel-number">0x03</span><h3>WORDS + MEANING.</h3><p>Tantivy BM25 retrieves keyword matches. EmbeddingGemma retrieves by meaning. Reciprocal Rank Fusion combines their rankings; neither path guarantees a match.</p><div class="panel-signal"><span></span>fusion: <b>RRF k=60</b></div></article>
       </div>
     </section>
 
@@ -48,14 +48,14 @@
       <div class="sync-rig reveal">
         <div class="rig-copy">
           <p class="section-index">MULTI-MAC // iCLOUD HANDOFF</p>
-          <h3 id="sync-title">SYNC THE AXONS.<br>REBUILD THE REFLEX.</h3>
-          <p><code>vagus init --icloud</code> places the vault in Apple's iCloud Drive and keeps a friendly <code>~/brain</code> symlink. Apple carries only Markdown; each Mac owns a local, rebuildable index and model cache.</p>
-          <p>After a week away, force-refresh the filesystem window that may have changed while still reconciling new and deleted notes globally.</p>
+          <h3 id="sync-title">SYNC THE NOTES.<br>KEEP INDEXES LOCAL.</h3>
+          <p><code>vagus init --icloud</code> creates or uses an iCloud Drive vault and links the configured vault path, normally <code>~/brain</code>, to it. It refuses to move occupied local vaults; follow the <a href="https://github.com/vasovagal/vagus/blob/v0.14.1/README.md#setup">manual migration steps</a> if needed. Vagus keeps indexes and model caches outside the vault.</p>
+          <p>After a week away, refresh notes whose filesystem modification time falls within seven days. The command also reconciles new and deleted notes across the vault.</p>
           <div class="command-block" data-copy-group><code><span>$</span> vagus reindex --since=7d</code><button type="button" data-copy="vagus reindex --since=7d">copy</button></div>
-          <p class="microcopy">Older embeddings survive. Recent mtimes are re-read. Local usage counters remain.</p>
+          <p class="microcopy">Older indexed notes and local usage records remain. An embedding-identity mismatch requires a full reindex.</p>
         </div>
         <div class="sync-diagram" role="img" aria-label="Two Macs syncing Markdown through iCloud while keeping separate local indexes">
-          <div class="machine"><span>MAC_A</span><b>~/brain</b><small>local index<br>50.5 MiB</small></div>
+          <div class="machine"><span>MAC_A</span><b>~/brain</b><small>local index<br>rebuild here</small></div>
           <div class="sync-wire"><span>Markdown</span><i>← iCLOUD →</i><small>Apple auto-sync</small></div>
           <div class="machine"><span>MAC_B</span><b>~/brain</b><small>local index<br>rebuild here</small></div>
         </div>
@@ -65,11 +65,11 @@
     <section class="page-section section-shell compact-section" aria-labelledby="filing-title">
       <div class="split-copy reveal">
         <div><p class="section-index">ASSISTED PARA</p><h2 id="filing-title">THE AGENT PROPOSES.<br>YOU APPROVE.</h2></div>
-        <div><p>A SOTA harness such as pi, Codex CLI, or Claude Code can turn a finished ticket into durable Markdown, ask <code>vagus file --suggest --json</code> for likely PARA homes, and combine those recommendations with live repository context before an approved move.</p><a class="text-route" href="/smart/#harness">inspect the agent tandem →</a></div>
+        <div><p>Use an agent harness such as pi, Codex CLI, or Claude Code to create notes and propose filing destinations. Set <code>$note</code> to the note’s path, run <code>vagus file &quot;$note&quot; --suggest --json</code>, then approve the move. Agent workflows expose retrieved note text to the host agent and follow that agent’s network and privacy settings.</p><a class="text-route" href="/smart/#harness">read the agent workflow →</a></div>
       </div>
     </section>
 
-    <section class="page-next"><p>Why do exact words and remembered meaning both survive?</p><a href="/smart/">03 // how so smart? →</a></section>
+    <section class="page-next"><p>See how keyword and semantic rankings are combined.</p><a href="/smart/">03 // how so smart? →</a></section>
   </main>
 
   <footer class="site-footer"><p><strong>vasovagal</strong> // vagus</p><div><a href="/">home</a><a href="/corti/">corti</a><a href="/smart/">how so smart?</a><a href="/install/">install</a></div><p>one binary // zero daemon // <span id="year">2026</span></p></footer>
